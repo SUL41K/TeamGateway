@@ -5,6 +5,7 @@ namespace ClassLibrary
     public class clsOrder
     {
         public string GameTitle { get; set; }
+        public string TotalPrice { get; set; }
 
         public string Valid(string gGameTitle)
         {

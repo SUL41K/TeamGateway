@@ -27,7 +27,16 @@ namespace Testing3
         }
 
         [TestMethod]
-        public void ValidOk()
+        public void TotalPriceOk()
+        {
+            clsOrder AnOrder = new clsOrder();
+            string TestData = "15.00";
+            AnOrder.TotalPrice = TestData;
+            Assert.AreEqual(AnOrder.TotalPrice, TestData);
+        }
+
+        [TestMethod]
+        public void GamerTitleNotNull()
         {
             clsOrder AnOrder = new clsOrder();
             string Error = "";
