@@ -8,20 +8,30 @@ namespace Testing3
     public class tstOrder
     {
         //good test data
-        private string gGameTitle = "Some Game Title";
+        private string TestString = "Some Test String";
+        private int TestInt = 123;
 
         [TestMethod]
-        public void InstanceOk()
+        public void ClassOrderNotNull()
         {
             clsOrder AnOrder = new clsOrder();
             Assert.IsNotNull(AnOrder);
         }
 
         [TestMethod]
+        public void OrderIdOk()
+        {
+            clsOrder AnOrder = new clsOrder();
+            int TestData = TestInt;
+            AnOrder.OrderId = TestData;
+            Assert.AreEqual(AnOrder.OrderId, TestData);
+        }
+
+        [TestMethod]
         public void GameTitleOk()
         {
             clsOrder AnOrder = new clsOrder();
-            string TestData = gGameTitle;
+            string TestData = TestString;
             AnOrder.GameTitle = TestData;
             Assert.AreEqual(AnOrder.GameTitle, TestData);
         }
@@ -30,18 +40,36 @@ namespace Testing3
         public void TotalPriceOk()
         {
             clsOrder AnOrder = new clsOrder();
-            string TestData = "15.00";
+            String TestData = TestString;
             AnOrder.TotalPrice = TestData;
             Assert.AreEqual(AnOrder.TotalPrice, TestData);
         }
 
         [TestMethod]
-        public void GamerTitleNotNull()
+        public void DeliveryDateOk()
+        {
+            clsOrder AnOrder = new clsOrder();
+            int TestData = 01 / 01 / 2020;
+            AnOrder.DeliveryDate = TestData;
+            Assert.AreEqual(AnOrder.DeliveryDate, TestData);
+        }
+
+        [TestMethod]
+        public void AvailabilityOk()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean TestData = true;
+            AnOrder.Availability = TestData;
+            Assert.AreEqual(AnOrder.Availability, TestData);
+        }
+
+        [TestMethod]
+        public void GameTitleNotNull()
         {
             clsOrder AnOrder = new clsOrder();
             string Error = "";
-            string TestData = gGameTitle;
-            Error = AnOrder.Valid(gGameTitle);
+            string TestData = TestString;
+            Error = AnOrder.Valid(TestString);
             Assert.AreEqual(Error, "");
         }
 

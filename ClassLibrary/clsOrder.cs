@@ -4,8 +4,11 @@ namespace ClassLibrary
 {
     public class clsOrder
     {
+        public int OrderId { get; set; }
         public string GameTitle { get; set; }
-        public string TotalPrice { get; set; }
+        public String TotalPrice { get; set; }
+        public int DeliveryDate { get; set; }          //should be changed to datetime datatype
+        public Boolean Availability { get; set; }
 
         public string Valid(string gGameTitle)
         {
