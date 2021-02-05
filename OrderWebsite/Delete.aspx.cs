@@ -14,6 +14,6 @@ public partial class Delete : System.Web.UI.Page
 
     protected void btnYes_Click(object sender, EventArgs e)
     {
-        Response.Redirect("OrderDataEntry.aspx");
+        Response.Redirect("Default.aspx");
     }
 }
