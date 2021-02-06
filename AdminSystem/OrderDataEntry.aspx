@@ -30,7 +30,7 @@
         <asp:CheckBox ID="chbAvailability" runat="server" height="27px" Text="Availability" TextAlign="Left" width="161px" />
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="btnApply" runat="server" Text="Apply" />
+        <asp:Button ID="btnApply" runat="server" Text="Apply" OnClick="btnApply_Click" />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click" />
         <br />
