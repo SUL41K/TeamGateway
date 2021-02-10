@@ -23,7 +23,7 @@
             <asp:TextBox ID="txtCustomerEmail" runat="server"></asp:TextBox>
         </p>
         <p>
-            <asp:CheckBox ID="chkCustomerForm" runat="server" Text="Subscribe for updates" />
+            <asp:CheckBox ID="chkCustomerSubscribe" runat="server" Text="Subscribe for updates" />
         </p>
         <asp:Label ID="lblError" runat="server"></asp:Label>
         <p>

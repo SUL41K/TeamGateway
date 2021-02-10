@@ -61,12 +61,12 @@ namespace Testing2
 
 
         [TestMethod]
-        public void CustomerFormOk()
+        public void CustomerSubscribeOk()
         {
             clsCustomer ACustomer = new clsCustomer();
             Boolean TestData = true;
-            ACustomer.CustomerForm = TestData;
-            Assert.AreEqual(ACustomer.CustomerForm, TestData);
+            ACustomer.CustomerSubscribe = TestData;
+            Assert.AreEqual(ACustomer.CustomerSubscribe, TestData);
         }
 
         [TestMethod]
@@ -99,6 +99,127 @@ namespace Testing2
             Error = ACustomer.Valid(TestData);
             Assert.AreNotEqual(Error, "");
         }
+
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+
+            Boolean Found = false;
+
+            Int32 CustomerId = 1;
+
+            Found = ACustomer.Find(CustomerId);
+
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+
+        public void TestCustomerNameFound()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 CustomerId = 1;
+
+            Found = ACustomer.Find(CustomerId);
+
+            if (ACustomer.CustomerName != "Tobias Jenkins")
+            {
+                OK = false;
+            }
+
+
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+
+        public void TestCustomerIdFound()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 CustomerId = 1;
+
+            Found = ACustomer.Find(CustomerId);
+
+            if (ACustomer.CustomerId != 1)
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+
+        public void TestCustomerDOBFound()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 CustomerId = 1;
+
+            Found = ACustomer.Find(CustomerId);
+
+            if (ACustomer.CustomerDOB != Convert.ToDateTime("10/10/1994"))
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestCustomerEmailFound()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 CustomerId = 1;
+
+            Found = ACustomer.Find(CustomerId);
+
+            if (ACustomer.CustomerEmail != "tjenkins@gmail.com")
+            {
+                OK = false;
+            }
+
+
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestCustomerSubscribeFound()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 CustomerId = 1;
+
+            Found = ACustomer.Find(CustomerId);
+
+            if (ACustomer.CustomerSubscribe != true)
+            {
+                OK = false;
+            }
+
+
+            Assert.IsTrue(OK);
+        }
+
 
     }
 }
