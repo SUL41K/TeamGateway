@@ -4,11 +4,70 @@ namespace ClassLibrary
 {
     public class clsCustomer
     {
-        public int CustomerId { get; set; }
-        public string CustomerName { get; set; }
-        public string CustomerEmail { get; set; }
-        public DateTime CustomerDOB { get; set; }          //should be changed to datetime datatype
-        public Boolean CustomerForm { get; set; }
+        private string mCustomerName;
+        private Int32 mCustomerId;
+        private DateTime mCustomerDOB;
+        private string mCustomerEmail;
+        private Boolean mCustomerSubscribe;
+
+        public string CustomerName
+        {
+            get
+            {
+                return mCustomerName;
+            }
+
+            set
+            {
+                mCustomerName = value;
+            }
+        }
+        public Int32 CustomerId
+        {
+            get
+            {
+                return mCustomerId;
+            }
+            set
+            {
+                mCustomerId = value;
+            }
+        }
+
+        public DateTime CustomerDOB
+        {
+            get
+            {
+                return mCustomerDOB;
+            }
+            set
+            {
+                mCustomerDOB = value;
+            }
+        }
+        public string CustomerEmail
+        {
+            get
+            {
+                return mCustomerEmail;
+            }
+            set
+            {
+                mCustomerEmail = value;
+            }
+        }
+                  
+        public Boolean CustomerSubscribe
+        {
+            get
+            {
+                return mCustomerSubscribe;
+            }
+            set
+            {
+                mCustomerSubscribe = value;
+            }
+        }
 
         public string Valid(string cCustomerName)
         {
@@ -26,6 +85,16 @@ namespace ClassLibrary
             {
                 return "";
             }
+        }
+
+        public bool Find(Int32 customerId)
+        {
+            mCustomerId = 1;
+            mCustomerDOB = Convert.ToDateTime("10/10/1994");
+            mCustomerName = "Tobias Jenkins";
+            mCustomerEmail = "tjenkins@gmail.com";
+            mCustomerSubscribe = true;
+            return true;
         }
     }
 }
