@@ -28,9 +28,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         AnStock.ReleaseDate = Convert.ToDateTime(txtDate.Text);
         Session["AnStock"] = AnStock;
 
-        AnStock.Price = Convert.ToInt32(txtPrice.Text);
+        AnStock.Price = Convert.ToDecimal(txtPrice.Text);
         Session["AnStock"] = AnStock;
-
 
         AnStock.AgeRating = Convert.ToInt32(txtAgeRating.Text);
         Session["AnStock"] = AnStock;

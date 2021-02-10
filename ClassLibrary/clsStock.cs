@@ -10,7 +10,7 @@ namespace ClassLibrary
         private String mgameName;
         private DateTime mReleaseDate;
         private Int32 mAgeRating;
-        private Int32 mPrice;
+        private Decimal mPrice;
         private Boolean mAvailability;
 
         
@@ -59,7 +59,7 @@ namespace ClassLibrary
                 mAgeRating = value;
             }
         }
-        public Int32 Price
+        public Decimal Price
         {
             get
             {
@@ -103,7 +103,7 @@ namespace ClassLibrary
 
         public bool Find(int gameID)
         {
-            //always return true
+           
             mGameID = 3;
             mgameName = "FIFA 21";
             mReleaseDate = Convert.ToDateTime("06/10/2020");
