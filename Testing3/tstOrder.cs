@@ -10,6 +10,7 @@ namespace Testing3
         //good test data
         private string TestString = "Some Test String";
         private int TestInt = 123;
+        private Double TestDouble = 1.50;
 
         [TestMethod]
         public void ClassOrderNotNull()
@@ -40,7 +41,7 @@ namespace Testing3
         public void TotalPriceOk()
         {
             clsOrder AnOrder = new clsOrder();
-            String TestData = TestString;
+            Double TestData = TestDouble;
             AnOrder.TotalPrice = TestData;
             Assert.AreEqual(AnOrder.TotalPrice, TestData);
         }
@@ -49,18 +50,18 @@ namespace Testing3
         public void DeliveryDateOk()
         {
             clsOrder AnOrder = new clsOrder();
-            int TestData = 01 / 01 / 2020;
+            DateTime TestData = DateTime.Now.Date;
             AnOrder.DeliveryDate = TestData;
             Assert.AreEqual(AnOrder.DeliveryDate, TestData);
         }
 
         [TestMethod]
-        public void AvailabilityOk()
+        public void ShipmentOk()
         {
             clsOrder AnOrder = new clsOrder();
             Boolean TestData = true;
-            AnOrder.Availability = TestData;
-            Assert.AreEqual(AnOrder.Availability, TestData);
+            AnOrder.Shipment = TestData;
+            Assert.AreEqual(AnOrder.Shipment, TestData);
         }
 
         [TestMethod]
