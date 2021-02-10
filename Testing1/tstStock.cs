@@ -107,6 +107,166 @@ namespace Testing1
             Assert.AreNotEqual(Error, "");
         }
 
+        [TestMethod]
+
+        public void FindMethodOK()
+        {
+            
+            clsStock AnStock = new clsStock();
+            
+            Boolean Found = false;
+           
+            Int32 gameID = 2;
+          
+            Found = AnStock.Find(gameID);
+
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+
+        public void TestGameIDFound()
+        {
+
+            clsStock AnStock = new clsStock();
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 gameID = 3;
+
+            Found = AnStock.Find(gameID);
+            if (AnStock.gameID != 3)
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+
+        public void TestGameNameFound()
+        {
+
+            clsStock AnStock = new clsStock();
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 gameID = 3;
+
+            Found = AnStock.Find(gameID);
+            if (AnStock.gameName != "FIFA 21")
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+
+        [TestMethod]
+
+        public void TestReleaseDateFound()
+        {
+            clsStock AnStock = new clsStock();
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 gameID = 3;
+
+            Found = AnStock.Find(gameID);
+
+            if (AnStock.ReleaseDate!= Convert.ToDateTime("06/10/2020"))
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestPriceFound()
+        {
+            clsStock AnStock = new clsStock();
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 gameID = 3;
+
+            Found = AnStock.Find(gameID);
+
+            if (AnStock.Price != 60)
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+
+        [TestMethod]
+        public void TestAvailabilityFound()
+        {
+            clsStock AnStock= new clsStock();
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 gameID = 3;
+
+            Found = AnStock.Find(gameID);
+
+            if (AnStock.Availability != true)
+            {
+                OK = false;
+            }
+
+
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestAgeRatingFound()
+        {
+            clsStock AnStock = new clsStock();
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 gameID = 3;
+
+            Found = AnStock.Find(gameID);
+
+            if (AnStock.AgeRating != 3)
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
 
