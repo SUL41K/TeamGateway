@@ -6,9 +6,9 @@ namespace ClassLibrary
     {
         public int OrderId { get; set; }
         public string GameTitle { get; set; }
-        public String TotalPrice { get; set; }
-        public int DeliveryDate { get; set; }          //should be changed to datetime datatype
-        public Boolean Availability { get; set; }
+        public Double TotalPrice { get; set; }
+        public DateTime DeliveryDate { get; set; }          //should be changed to datetime datatype
+        public Boolean Shipment { get; set; }
 
         public string Valid(string gGameTitle)
         {

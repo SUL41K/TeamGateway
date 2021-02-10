@@ -12,6 +12,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         clsOrder AnOrder = new clsOrder();
         AnOrder = (clsOrder)Session["AnOrder"];
+        Response.Write(AnOrder.OrderId);
+        Response.Write("<br>");
         Response.Write(AnOrder.GameTitle);
+        Response.Write("<br>");
+        Response.Write(AnOrder.TotalPrice);
+        Response.Write("<br>");
+        Response.Write(AnOrder.DeliveryDate);
+        Response.Write("<br>");
+        Response.Write(AnOrder.Shipment);
     }
 }
