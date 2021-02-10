@@ -9,6 +9,7 @@ namespace Testing1
     {
         private string TestString = "Some Test String";
         private int TestInt = 123;
+        private decimal TestDec = 456;
 
         [TestMethod]
         public void InstanceOK()
@@ -61,7 +62,7 @@ namespace Testing1
         public void PriceOk()
         {
             clsStock AnStock = new clsStock();
-            int TestData = TestInt;
+            decimal TestData = TestDec;
             AnStock.Price = TestData;
             Assert.AreEqual(AnStock.Price, TestData);
         }
@@ -199,7 +200,7 @@ namespace Testing1
 
             Found = AnStock.Find(gameID);
 
-            if (AnStock.Price != 60)
+            if (AnStock.Price != Convert.ToDecimal(60))
             {
                 OK = false;
             }
