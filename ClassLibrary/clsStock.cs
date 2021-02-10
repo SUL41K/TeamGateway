@@ -4,12 +4,84 @@ namespace ClassLibrary
 {
     public class clsStock
     {
-        public int gameID { get; set; }
-        public string gameName { get; set; }
-        public bool Availability { get; set; }
-        public DateTime ReleaseDate { get; set; }
-        public int Price { get; set; }
-        public int AgeRating { get; set; }
+      
+
+        private Int32 mGameID;
+        private String mgameName;
+        private DateTime mReleaseDate;
+        private Int32 mAgeRating;
+        private Int32 mPrice;
+        private Boolean mAvailability;
+
+        
+
+        public Int32 gameID
+        {
+            get
+            {
+                return mGameID;
+            }
+            set
+            {
+                mGameID = value;
+            }
+        }
+        public String gameName
+        {
+            get
+            {
+                return mgameName;
+            }
+            set
+            {
+                mgameName = value;
+            }
+        }
+        public DateTime ReleaseDate
+        {
+            get
+            {
+                return mReleaseDate;
+            }
+            set
+            {
+                mReleaseDate = value;
+            }
+        }
+        public Int32 AgeRating
+        {
+            get
+            {
+                return mAgeRating;
+            }
+            set
+            {
+                mAgeRating = value;
+            }
+        }
+        public Int32 Price
+        {
+            get
+            {
+                return mPrice;
+            }
+            set
+            {
+                mPrice = value;
+            }
+        }
+
+        public Boolean Availability
+        {
+            get
+            {
+                return mAvailability;
+            }
+            set
+            {
+                mAvailability = value;
+            }
+        }
 
         public string Valid(string gGameName)
         {
@@ -27,6 +99,19 @@ namespace ClassLibrary
             {
                 return "";
             }
+        }
+
+        public bool Find(int gameID)
+        {
+            //always return true
+            mGameID = 3;
+            mgameName = "FIFA 21";
+            mReleaseDate = Convert.ToDateTime("06/10/2020");
+            mAgeRating = 3;
+            mPrice = 60;
+            mAvailability = true;
+  
+            return true;
         }
     }
 }
