@@ -8,7 +8,7 @@ namespace Testing3
     public class tstOrder
     {
         //good test data
-        private string TestString = "Some Test String";
+        private string TestString = "some STRING To test";
         private int TestInt = 123;
         private Double TestDouble = 1.50;
 

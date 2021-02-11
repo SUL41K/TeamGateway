@@ -13,21 +13,23 @@
                 Order Page</p>
         </div>
         <br />
-        <asp:Label ID="lblOrderId" runat="server" Text="OrderID: "></asp:Label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Label ID="lblOrderId" runat="server" Text="Order  ID: " height="27px" width="192px"></asp:Label>
+&nbsp;&nbsp;<asp:TextBox ID="txtOrderId" runat="server" height="27px" width="200px"></asp:TextBox>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;
-        <asp:TextBox ID="txtOrderId" runat="server"></asp:TextBox>
         <br />
-        <asp:Label ID="lblGameTitle" runat="server" Text="Game Title: " height="27px" width="189px"></asp:Label>
-        <asp:TextBox ID="txtGameTitle" runat="server"></asp:TextBox>
+        <asp:Label ID="lblGameTitle" runat="server" Text="Game Title: " height="27px" width="200px"></asp:Label>
+        <asp:TextBox ID="txtGameTitle" runat="server" height="27px" width="200px"></asp:TextBox>
         <br />
-        <asp:Label ID="lblTotalPrice" runat="server" Text="Total Price: " height="27px" width="189px"></asp:Label>
-        <asp:TextBox ID="txtTotalPrice" runat="server"></asp:TextBox>
+        <asp:Label ID="lblTotalPrice" runat="server" Text="Total Price: " height="27px" width="200px"></asp:Label>
+        <asp:TextBox ID="txtTotalPrice" runat="server" height="27px" width="200px"></asp:TextBox>
         <br />
-        <asp:Label ID="lblDeliveryDate" runat="server" Text="Delivery Date: " height="27px" width="189px"></asp:Label>
-        <asp:TextBox ID="txtDeliveryDate" runat="server"></asp:TextBox>
+        <asp:Label ID="lblDeliveryDate" runat="server" Text="Delivery Date: " height="27px" width="200px"></asp:Label>
+        <asp:TextBox ID="txtDeliveryDate" runat="server" height="27px" width="200px"></asp:TextBox>
         <br />
-        <asp:CheckBox ID="chbAvailability" runat="server" height="27px" Text="Availability" TextAlign="Left" width="161px" />
+        <br />
+        <asp:CheckBox ID="chbShipment" runat="server" height="27px" Text="Shipment" TextAlign="Left" width="200px" />
+        <br />
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="btnApply" runat="server" Text="Apply" OnClick="btnApply_Click" />
