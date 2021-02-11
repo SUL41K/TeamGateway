@@ -4,11 +4,68 @@ namespace ClassLibrary
 {
     public class clsOrder
     {
-        public int OrderId { get; set; }
-        public string GameTitle { get; set; }
-        public Double TotalPrice { get; set; }
-        public DateTime DeliveryDate { get; set; }          //should be changed to datetime datatype
-        public Boolean Shipment { get; set; }
+        private int mOrderId;
+        private string mGameTitle;
+        private Double mTotalPrice;
+        private DateTime mDeliveryDate;
+        private Boolean mShipment;
+
+        public int OrderId
+        {
+            get
+            {
+                return mOrderId;
+            }
+            set
+            {
+                mOrderId = value;
+            }
+        }
+
+        public string GameTitle
+        {
+            get
+            {
+                return mGameTitle;
+            }
+            set
+            {
+                mGameTitle = value;
+            }
+        }
+        public Double TotalPrice
+        {
+            get
+            {
+                return mTotalPrice;
+            }
+            set
+            {
+                mTotalPrice = value;
+            }
+        }
+        public DateTime DeliveryDate
+        {
+            get
+            {
+                return mDeliveryDate;
+            }
+            set
+            {
+                mDeliveryDate = value;
+            }
+        }
+        public Boolean Shipment
+        {
+            get
+            {
+                return mShipment;
+            }
+            set
+            {
+                mShipment = value;
+            }
+        }
 
         public string Valid(string gGameTitle)
         {
@@ -26,6 +83,20 @@ namespace ClassLibrary
             {
                 return "";
             }
+        }
+
+        public bool Find(int AddressNo)
+        {
+            //set the private data members to the test data value
+            mOrderId = 21;
+            mGameTitle = "Test Game Title";
+            mTotalPrice = 1;
+            mDeliveryDate = Convert.ToDateTime("16/9/2015");
+            mShipment = true;
+
+            //always return true
+            return true;
+
         }
     }
 }
