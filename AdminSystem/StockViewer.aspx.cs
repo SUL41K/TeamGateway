@@ -16,10 +16,16 @@ public partial class _1Viewer : System.Web.UI.Page
         AnStock = (clsStock)Session["AnStock"];
         //display the game name for this entry
         Response.Write(AnStock.gameName);
+        Response.Write("<br>");
         Response.Write(AnStock.gameID);
+        Response.Write("<br>");
         Response.Write(AnStock.Price);
+        Response.Write("<br>");
         Response.Write(AnStock.ReleaseDate);
+        Response.Write("<br>");
         Response.Write(AnStock.AgeRating);
-
+        Response.Write("<br>");
+        Response.Write(AnStock.Availability);
+        Response.Write("<br>");
     }
 }

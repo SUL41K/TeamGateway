@@ -28,7 +28,7 @@
         <asp:TextBox ID="txtDeliveryDate" runat="server" height="27px" width="200px"></asp:TextBox>
         <br />
         <br />
-        <asp:CheckBox ID="chbShipment" runat="server" height="27px" Text="Shipment" TextAlign="Left" width="200px" />
+        <asp:CheckBox ID="chbShipment" runat="server" height="27px" Text="Shipment" TextAlign="Left" width="200px" OnCheckedChanged="chbShipment_CheckedChanged" />
         <br />
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -41,7 +41,7 @@
         <br />
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="btnEdit" runat="server" Text="Edit" />
+        <asp:Button ID="btnEdit" runat="server" Text="Edit" OnClick="btnEdit_Click" />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" />
     </form>

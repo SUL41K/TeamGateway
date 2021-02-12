@@ -15,11 +15,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
-        //create a new instance of clsStock
+       
         clsStock AnStock = new clsStock();
-        //Capture the gamename
-        AnStock.gameName = txtGameName.Text;
-        //Store the stock in the session object
+      
+        AnStock.gameName = txtGameName.Text; 
         Session["AnStock"] = AnStock;
 
         AnStock.gameID = Convert.ToInt32(txtGameID.Text);
@@ -34,7 +33,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
         AnStock.AgeRating = Convert.ToInt32(txtAgeRating.Text);
         Session["AnStock"] = AnStock;
 
+        AnStock.Availability= chkAvailable.Checked;
+        Session["AnStock"] = AnStock;
+
         //navigate to the viewer page
         Response.Redirect("StockViewer.aspx");
     }
+
+    
+    protected void chkAvailable_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
 }
+
