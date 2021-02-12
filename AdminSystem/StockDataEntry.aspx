@@ -30,7 +30,7 @@
         <asp:TextBox ID="txtAgeRating" runat="server" width="125px"></asp:TextBox>
         <br />
         <br />
-        <asp:CheckBox ID="chkAvailable" runat="server" Text="Available" />
+        <asp:CheckBox ID="chkAvailable" runat="server" Text="Available" OnCheckChanged="chkAvailable_CheckedChange" />
         <br />
         <br />
         <asp:Label ID="lblError" runat="server"></asp:Label>

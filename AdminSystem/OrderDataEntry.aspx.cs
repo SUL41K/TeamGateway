@@ -36,4 +36,14 @@ public partial class _Default : System.Web.UI.Page
     {
 
     }
+
+    protected void chbShipment_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+
+    }
 }

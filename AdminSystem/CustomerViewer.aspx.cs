@@ -13,9 +13,14 @@ public partial class _1Viewer : System.Web.UI.Page
         clsCustomer ACustomer = new clsCustomer();
         ACustomer = (clsCustomer)Session["ACustomer"];
         Response.Write(ACustomer.CustomerName);
+        Response.Write("<br>");
         Response.Write(ACustomer.CustomerEmail);
+        Response.Write("<br>");
         Response.Write(ACustomer.CustomerId);
+        Response.Write("<br>");
         Response.Write(ACustomer.CustomerDOB);
-
+        Response.Write("<br>");
+        Response.Write(ACustomer.CustomerSubscribe);
+        Response.Write("<br>");
     }
 }
