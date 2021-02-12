@@ -24,7 +24,7 @@ public partial class _Default : System.Web.UI.Page
 
         AnOrder.OrderId = Convert.ToInt32(txtOrderId.Text);
         AnOrder.GameTitle = txtGameTitle.Text;
-        AnOrder.TotalPrice = Convert.ToDouble(txtTotalPrice.Text);
+        AnOrder.TotalPrice = Convert.ToDecimal(txtTotalPrice.Text);
         AnOrder.DeliveryDate = Convert.ToDateTime(txtDeliveryDate.Text);
         AnOrder.Shipment = chbShipment.Checked;
 

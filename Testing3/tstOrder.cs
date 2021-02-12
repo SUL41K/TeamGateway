@@ -10,7 +10,7 @@ namespace TestingOrder
         //good test data
         private string TestString = "some STRING To test";
         private int TestInt = 123;
-        private Double TestDouble = 1.50;
+        private Decimal TestDecimal = 50;
 
         [TestMethod]
         public void ClassOrderNotNull()
@@ -41,7 +41,7 @@ namespace TestingOrder
         public void TotalPriceOk()
         {
             clsOrder AnOrder = new clsOrder();
-            Double TestData = TestDouble;
+            Decimal TestData = TestDecimal;
             AnOrder.TotalPrice = TestData;
             Assert.AreEqual(AnOrder.TotalPrice, TestData);
         }
