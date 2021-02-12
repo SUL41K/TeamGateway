@@ -32,7 +32,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
         ACustomer.CustomerDOB = Convert.ToDateTime(txtCustomerDOB.Text);
 
         Session["ACustomer"] = ACustomer;
-    
+
+        ACustomer.CustomerSubscribe = chkCustomerSubscribe.Checked;
+
+        Session["ACustomer"] = ACustomer;
+
 
 
         Response.Redirect("CustomerViewer.aspx");
