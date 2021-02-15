@@ -6,7 +6,7 @@ namespace ClassLibrary
     {
         private int mOrderId;
         private string mGameTitle;
-        private Double mTotalPrice;
+        private Decimal mTotalPrice;
         private DateTime mDeliveryDate;
         private Boolean mShipment;
 
@@ -33,7 +33,7 @@ namespace ClassLibrary
                 mGameTitle = value;
             }
         }
-        public Double TotalPrice
+        public Decimal TotalPrice
         {
             get
             {
