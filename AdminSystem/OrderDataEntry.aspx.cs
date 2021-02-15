@@ -24,7 +24,7 @@ public partial class _Default : System.Web.UI.Page
 
         AnOrder.OrderId = Convert.ToInt32(txtOrderId.Text);
         AnOrder.GameTitle = txtGameTitle.Text;
-        AnOrder.TotalPrice = Convert.ToDouble(txtTotalPrice.Text);
+        AnOrder.TotalPrice = Convert.ToDecimal(txtTotalPrice.Text);
         AnOrder.DeliveryDate = Convert.ToDateTime(txtDeliveryDate.Text);
         AnOrder.Shipment = chbShipment.Checked;
 
@@ -33,6 +33,16 @@ public partial class _Default : System.Web.UI.Page
     }
 
     protected void btnApply_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void chbShipment_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
     {
 
     }

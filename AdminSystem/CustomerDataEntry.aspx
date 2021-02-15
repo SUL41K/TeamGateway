@@ -16,7 +16,7 @@
             <asp:Label ID="lblCustomerName" runat="server" Text="Name" width="78px"></asp:Label>
             <asp:TextBox ID="txtCustomerName" runat="server"></asp:TextBox>
         </p>
-        <asp:Label ID="lblCustomerDOB" runat="server" Text="Date of Birth"></asp:Label>
+        <asp:Label ID="lblCustomerDOB" runat="server" Text="Date of Birth" width="78px"></asp:Label>
         <asp:TextBox ID="txtCustomerDOB" runat="server"></asp:TextBox>
         <p>
             <asp:Label ID="lblCustomerEmail" runat="server" Text="Email" width="78px"></asp:Label>
