@@ -45,5 +45,24 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
 
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        clsStock AnStock = new clsStock();
+        Int32 gameID;
+        Boolean Found = false;
+        gameID = Convert.ToInt32(txtGameID.Text);
+        Found = AnStock.Find(gameID);
+        if (Found == true)
+        {
+            txtGameID.Text = AnStock.gameID.ToString();
+            txtGameName.Text = AnStock.gameName;
+            txtAgeRating.Text = AnStock.AgeRating.ToString();
+            txtPrice.Text = AnStock.Price.ToString();
+            txtDate.Text = AnStock.ReleaseDate.ToString();
+        }
+          
+
+    }
 }
 
