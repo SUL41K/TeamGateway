@@ -103,15 +103,29 @@ namespace ClassLibrary
 
         public bool Find(int gameID)
         {
-           
-            mGameID = 3;
-            mgameName = "FIFA 21";
-            mReleaseDate = Convert.ToDateTime("06/10/2020");
-            mAgeRating = 3;
-            mPrice = 60;
-            mAvailability = true;
-  
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@gameID", gameID);
+            DB.Execute("sproc_tblStock_FilterByGameID");
+
+            if (DB.Count == 1)
+            {
+            mGameID = Convert.ToInt32(DB.DataTable.Rows[0]["gameID"]);
+                mgameName = Convert.ToString(DB.DataTable.Rows[0] ["gameName"]);
+            mReleaseDate = Convert.ToDateTime(DB.DataTable.Rows[0]["releaseDate"]);
+            mAgeRating = Convert.ToInt32(DB.DataTable.Rows[0]["ageRating"]);
+            mPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["Price"]);
+            mAvailability = Convert.ToBoolean(DB.DataTable.Rows[0]["Availability"]);
+
             return true;
+
+            }
+
+            else
+            {
+                return false;
+            }
+
+          
         }
     }
 }
