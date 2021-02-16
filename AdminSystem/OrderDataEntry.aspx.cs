@@ -32,10 +32,7 @@ public partial class _Default : System.Web.UI.Page
         Response.Redirect("OrderViewer.aspx");
     }
 
-    protected void btnApply_Click(object sender, EventArgs e)
-    {
 
-    }
 
     protected void chbShipment_CheckedChanged(object sender, EventArgs e)
     {
@@ -45,5 +42,28 @@ public partial class _Default : System.Web.UI.Page
     protected void btnEdit_Click(object sender, EventArgs e)
     {
 
+    }
+
+
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        clsOrder AnOrder = new clsOrder();
+
+        Int32 OrderId;
+        Boolean Found = false;
+
+        OrderId = Convert.ToInt32(txtOrderId.Text);
+
+        Found = AnOrder.Find(OrderId);
+
+        if (Found == true)
+        {
+            txtGameTitle.Text = AnOrder.GameTitle;
+            txtTotalPrice.Text = AnOrder.TotalPrice.ToString();
+            txtDeliveryDate.Text = AnOrder.DeliveryDate.ToString();
+            chbShipment.Text = AnOrder.Shipment.ToString();
+
+        }
     }
 }
