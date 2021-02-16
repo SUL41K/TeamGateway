@@ -47,4 +47,30 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
 
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        clsCustomer ACustomer = new clsCustomer();
+
+        Int32 CustomerId;
+
+        Boolean Found = false;
+
+        CustomerId = Convert.ToInt32(txtCustomerID.Text);
+
+        Found = ACustomer.Find(CustomerId);
+
+        if(Found == true)
+        {
+            txtCustomerDOB.Text = ACustomer.CustomerDOB.ToString();
+            txtCustomerEmail.Text = ACustomer.CustomerEmail;
+            txtCustomerName.Text = ACustomer.CustomerName;
+            
+        }
+
+        else if(Found == false)
+        {
+            System.Windows.Forms.MessageBox.Show("Please enter a valid number");
+        }
+    }
 }
