@@ -123,11 +123,11 @@ namespace Testing2
 
             Boolean OK = true;
 
-            Int32 CustomerId = 1;
+            Int32 CustomerId = 5;
 
             Found = ACustomer.Find(CustomerId);
 
-            if (ACustomer.CustomerName != "Tobias Jenkins")
+            if (ACustomer.CustomerName != "Joseph Stevenson")
             {
                 OK = false;
             }
@@ -186,7 +186,7 @@ namespace Testing2
 
             Boolean OK = true;
 
-            Int32 CustomerId = 1;
+            Int32 CustomerId = 3;
 
             Found = ACustomer.Find(CustomerId);
 
@@ -207,7 +207,7 @@ namespace Testing2
 
             Boolean OK = true;
 
-            Int32 CustomerId = 1;
+            Int32 CustomerId = 2;
 
             Found = ACustomer.Find(CustomerId);
 
