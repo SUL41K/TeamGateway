@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
@@ -50,6 +51,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnFind_Click(object sender, EventArgs e)
     {
+
+        
         clsCustomer ACustomer = new clsCustomer();
 
         Int32 CustomerId;
@@ -60,17 +63,23 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         Found = ACustomer.Find(CustomerId);
 
-        if(Found == true)
+
+        if (Found == true)
         {
             txtCustomerDOB.Text = ACustomer.CustomerDOB.ToString();
             txtCustomerEmail.Text = ACustomer.CustomerEmail;
             txtCustomerName.Text = ACustomer.CustomerName;
-            
+
         }
 
-        else if(Found == false)
+        else if (Found == false)
         {
-            System.Windows.Forms.MessageBox.Show("Please enter a valid number");
+            System.Windows.Forms.MessageBox.Show("This record does not exist");
         }
-    }
+
+        
+
+}
+
+
 }
