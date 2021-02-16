@@ -87,16 +87,25 @@ namespace ClassLibrary
 
         public bool Find(int AddressNo)
         {
-            //set the private data members to the test data value
-            mOrderId = 21;
-            mGameTitle = "Test Game Title";
-            mTotalPrice = 1;
-            mDeliveryDate = Convert.ToDateTime("16/9/2015");
-            mShipment = true;
+            clsDataConnection DB = new clsDataConnection();
 
-            //always return true
-            return true;
+            DB.AddParameter("OrderId", OrderId);
 
+            if (DB.Count == 1)
+            {
+
+                mOrderId = Convert.ToInt32(DB.DataTable.Rows[0]["orderId"]);
+                mGameTitle = Convert.ToString(DB.DataTable.Rows[0]["gameTitle"]);
+                mTotalPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["totalPrice"]);
+                mDeliveryDate = Convert.ToDateTime(DB.DataTable.Rows[0]["deliveryDate"]);
+                mShipment = Convert.ToBoolean(DB.DataTable.Rows[0]["shipment"]);
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
