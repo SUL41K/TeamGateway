@@ -61,7 +61,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtPrice.Text = AnStock.Price.ToString();
             txtDate.Text = AnStock.ReleaseDate.ToString();
         }
-          
+        else if (Found == false)
+        {
+            System.Windows.Forms.MessageBox.Show("This record does not exist");
+        }
 
     }
 }
