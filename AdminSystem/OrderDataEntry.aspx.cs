@@ -62,7 +62,7 @@ public partial class _Default : System.Web.UI.Page
             txtGameTitle.Text = AnOrder.GameTitle;
             txtTotalPrice.Text = AnOrder.TotalPrice.ToString();
             txtDeliveryDate.Text = AnOrder.DeliveryDate.ToString();
-            chbShipment.Text = AnOrder.Shipment.ToString();
+            chbShipment.Checked = AnOrder.Shipment;
 
         }
     }
