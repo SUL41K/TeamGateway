@@ -369,7 +369,7 @@ namespace TestingOrder
         {
             clsOrder AnOrder = new clsOrder();
             String Error = "";
-            string GameTitle = "";
+            string TotalPrice = "";
             Error = AnOrder.Valid(GameTitle, TotalPrice, DeliveryDate);
             Assert.AreNotEqual(Error, "");
         }
@@ -381,7 +381,7 @@ namespace TestingOrder
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string GameTitle = "0"; //this should be ok
+            string TotalPrice = "0"; //this should be ok
             //invoke the method
             Error = AnOrder.Valid(GameTitle, TotalPrice, DeliveryDate);
             //test to see that the result is correct
@@ -396,12 +396,28 @@ namespace TestingOrder
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string GameTitle = "10"; //this should be ok
+            string TotalPrice = "10"; //this should be ok
             //invoke the method
             Error = AnOrder.Valid(GameTitle, TotalPrice, DeliveryDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
+
+        [TestMethod]
+        public void TotalPriceCorrectDataType()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string TotalPrice = "asd"; //this should not be ok
+            //invoke the method
+            Error = AnOrder.Valid(GameTitle, TotalPrice, DeliveryDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
 
 
 

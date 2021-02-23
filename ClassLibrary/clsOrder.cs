@@ -116,6 +116,8 @@ namespace ClassLibrary
 
             DateTime DateTemp;
 
+            Decimal someTotalPrice;
+
             if (gameTitle.Length == 0)
             {
                 Error = Error + "The game title may not be blank : ";
@@ -129,6 +131,21 @@ namespace ClassLibrary
             if (totalPrice.Length == 0)
             {
                 Error = Error + "The total price may not be blank : ";
+            }
+
+            try
+            {
+                decimal i = 0;
+                bool result = decimal.TryParse(totalPrice, out i);  
+
+                if (result == false)
+                {
+                    Error = Error + "The price must only contain numbers : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "idk what is wrong : ";
             }
 
             try

@@ -22,16 +22,31 @@ public partial class _Default : System.Web.UI.Page
     {
         clsOrder AnOrder = new clsOrder();
 
-        AnOrder.OrderId = Convert.ToInt32(txtOrderId.Text);
-        AnOrder.GameTitle = txtGameTitle.Text;
-        AnOrder.TotalPrice = Convert.ToDecimal(txtTotalPrice.Text);
-        AnOrder.DeliveryDate = Convert.ToDateTime(txtDeliveryDate.Text);
-        AnOrder.Shipment = chbShipment.Checked;
+        string OrderId = txtOrderId.Text;
+        string GameTitle = txtGameTitle.Text;
+        string TotalPrice = txtTotalPrice.Text;
+        string DeliveryDate = txtDeliveryDate.Text;
+        string Shipment = chbShipment.Text;
+        string Error = "";
 
-        Session["AnOrder"] = AnOrder;
-        Response.Redirect("OrderViewer.aspx");
+        Error = AnOrder.Valid(GameTitle, TotalPrice, DeliveryDate);
+
+        if (Error == "")
+        {
+            AnOrder.OrderId = Convert.ToInt32(txtOrderId.Text);
+            AnOrder.GameTitle = GameTitle;
+            AnOrder.TotalPrice = Convert.ToDecimal(TotalPrice);
+            AnOrder.DeliveryDate = Convert.ToDateTime(DeliveryDate);
+            AnOrder.Shipment = chbShipment.Checked;
+
+            Session["AnOrder"] = AnOrder;
+            Response.Redirect("OrderViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
     }
-
 
 
     protected void chbShipment_CheckedChanged(object sender, EventArgs e)
