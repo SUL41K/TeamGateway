@@ -48,6 +48,47 @@ namespace ClassLibrary
                 mReleaseDate = value;
             }
         }
+
+        public string Valid(string gameID, string gameName, string price, string ageRating, string releaseDate)
+        {
+            String Error = "";
+            DateTime DateTemp;
+            if (gameName.Length == 0)
+            {
+                Error = Error + "The game name may not be blank : ";
+            }
+
+            if (gameName.Length > 30)
+            {
+                Error = Error + "The name must not be less than 30 characters : ";
+            }
+
+            try
+            {
+                DateTemp = Convert.ToDateTime(releaseDate);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be past : ";
+
+                }
+
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the future : ";
+                }
+
+            }
+
+            catch
+            {
+                Error = Error + "The date was not a valid date : ";
+            }
+
+
+
+            return Error;
+        }
+
         public Int32 AgeRating
         {
             get
