@@ -18,29 +18,35 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         clsCustomer ACustomer = new clsCustomer();
 
-        ACustomer.CustomerName = txtCustomerName.Text;
+        string CustomerName = txtCustomerName.Text;
 
-        Session["ACustomer"] = ACustomer;
+        string CustomerEmail = txtCustomerEmail.Text;
 
-        ACustomer.CustomerEmail = txtCustomerEmail.Text;
+        string CustomerDOB = txtCustomerDOB.Text;
 
-        Session["ACustomer"] = ACustomer;
+        string CustomerId = txtCustomerID.Text;
 
-        ACustomer.CustomerId = Convert.ToInt32(txtCustomerID.Text);
+        string Error = "";
 
-        Session["ACustomer"] = ACustomer;
+        Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
 
-        ACustomer.CustomerDOB = Convert.ToDateTime(txtCustomerDOB.Text);
+        if (Error == "")
+        {
+            ACustomer.CustomerName = CustomerName;
+            ACustomer.CustomerEmail = CustomerEmail;
+            ACustomer.CustomerDOB = Convert.ToDateTime(CustomerDOB);
 
-        Session["ACustomer"] = ACustomer;
+            Session["ACustomer"] = ACustomer;
+            Response.Write("CustomerViewer.aspx");
 
-        ACustomer.CustomerSubscribe = chkCustomerSubscribe.Checked;
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
 
-        Session["ACustomer"] = ACustomer;
 
-
-
-        Response.Redirect("CustomerViewer.aspx");
+        
 
     }
 
