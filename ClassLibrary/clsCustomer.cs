@@ -45,6 +45,56 @@ namespace ClassLibrary
                 mCustomerDOB = value;
             }
         }
+
+        public string Valid(string customerName, string customerEmail, string customerDOB, string customerId)
+        {
+            String Error = "";
+
+            DateTime DateTemp;
+            if (customerName.Length == 0)
+            {
+                Error = Error + "The Customer Name may not be blank : ";
+            }
+
+            if (customerName.Length > 30)
+            {
+                Error = Error + "The Customer Name must be less than 30 characters : ";
+            }
+
+            if (customerEmail.Length == 0)
+            {
+                Error = Error + "The Customer email may not be blank : ";
+            }
+
+            if (customerEmail.Length > 50)
+            {
+                Error = Error + "The Customer email must be less than 50 characters : ";
+            }
+
+            try
+            {
+                DateTemp = Convert.ToDateTime(customerDOB);
+
+                
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be before the DOB : ";
+                }
+
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be after the DOB : ";
+                }
+
+            }
+            catch
+            {
+                Error = Error + "The date was not a valid date : ";
+            }
+
+            return Error;
+        }
+
         public string CustomerEmail
         {
             get
@@ -74,11 +124,6 @@ namespace ClassLibrary
             if (cCustomerName.Length < 1)
             {
                 return "description cannot be blank";
-            }
-
-            if (cCustomerName.Length > 50)
-            {
-                return "description cannot be more then 50 characters";
             }
 
             else
