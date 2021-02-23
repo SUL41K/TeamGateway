@@ -109,5 +109,65 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(string gameTitle, string totalPrice, string deliveryDate)
+        {
+            String Error = "";
+
+            DateTime DateTemp;
+
+            Decimal someTotalPrice;
+
+            if (gameTitle.Length == 0)
+            {
+                Error = Error + "The game title may not be blank : ";
+            }
+
+            if (gameTitle.Length > 50)
+            {
+                Error = Error + "The game title must be less the 50 characters long : ";
+            }
+
+            if (totalPrice.Length == 0)
+            {
+                Error = Error + "The total price may not be blank : ";
+            }
+
+            try
+            {
+                decimal i = 0;
+                bool result = decimal.TryParse(totalPrice, out i);  
+
+                if (result == false)
+                {
+                    Error = Error + "The price must only contain numbers : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "idk what is wrong : ";
+            }
+
+            try
+            {
+                DateTemp = Convert.ToDateTime(deliveryDate);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The Date cannot be in the past : ";
+                }
+
+                if (DateTemp > DateTime.Now.Date.AddYears(1))
+                {
+                    //record the error
+                    Error = Error + "The date cannot be more then 1 year in the future : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The Date was not a valid date : ";
+            }
+
+            return Error;
+        }
     }
 }
