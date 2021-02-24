@@ -264,10 +264,56 @@ namespace Testing1
         }
 
 
+        [TestMethod]
+        public void PriceEmpty()
+        {
+            clsStock AnStock= new clsStock();
+            String Error = "";
+            string Price = "";
+            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Assert.AreNotEqual(Error, "");
+        }
 
+        public void PriceMin()
+        {
+            
+            clsStock AnStock = new clsStock();
+           
+            String Error = "";
+            
+            string Price = "0"; 
+          
+            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            
+            Assert.AreEqual(Error, "");
+        }
 
+        [TestMethod]
+        public void PriceMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Price = "1"; //this should be ok
+            //invoke the method
+            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
 
-
+        [TestMethod]
+        public void PriceDataType()
+        {
+            clsStock AnStock = new clsStock();
+            String Error = "";
+            //create some test data to pass to the method
+            string Price = "abc"; //this should not be ok
+            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
 
 
         [TestMethod]
