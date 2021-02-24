@@ -53,6 +53,7 @@ namespace ClassLibrary
         {
             String Error = "";
             DateTime DateTemp;
+            
             if (gameName.Length == 0)
             {
                 Error = Error + "The game name may not be blank : ";
@@ -63,6 +64,25 @@ namespace ClassLibrary
                 Error = Error + "The name must not be less than 30 characters : ";
             }
 
+            if (price.Length == 0)
+            {
+                Error = Error + "The total price may not be blank : ";
+            }
+
+            try
+            {
+                decimal i = 0;
+                bool result = decimal.TryParse(price, out i);
+
+                if (result == false)
+                {
+                    Error = Error + "Please enter numerical values : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "Incorrect Values entered : ";
+            }
             try
             {
                 DateTemp = Convert.ToDateTime(releaseDate);

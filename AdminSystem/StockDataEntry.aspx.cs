@@ -15,30 +15,51 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
-       
+
         clsStock AnStock = new clsStock();
-      
-        AnStock.gameName = txtGameName.Text; 
-        Session["AnStock"] = AnStock;
+        string gameID = txtGameID.Text;
 
-        AnStock.gameID = Convert.ToInt32(txtGameID.Text);
-        Session["AnStock"] = AnStock;
+        string gameName = txtGameName.Text;
 
-        AnStock.ReleaseDate = Convert.ToDateTime(txtDate.Text);
-        Session["AnStock"] = AnStock;
+        string ReleaseDate = txtDate.Text;
 
-        AnStock.Price = Convert.ToDecimal(txtPrice.Text);
-        Session["AnStock"] = AnStock;
+        string Price = txtPrice.Text;
 
-        AnStock.AgeRating = Convert.ToInt32(txtAgeRating.Text);
-        Session["AnStock"] = AnStock;
+        string AgeRating = txtAgeRating.Text;
 
-        AnStock.Availability= chkAvailable.Checked;
-        Session["AnStock"] = AnStock;
 
-        //navigate to the viewer page
-        Response.Redirect("StockViewer.aspx");
+
+        string Error = "";
+        Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+        if (Error == "")
+        {
+            AnStock.gameName = txtGameName.Text;
+
+            AnStock.gameID = Convert.ToInt32(txtGameID.Text);
+
+
+            AnStock.ReleaseDate = Convert.ToDateTime(txtDate.Text);
+
+
+            AnStock.Price = Convert.ToDecimal(txtPrice.Text);
+
+
+            AnStock.AgeRating = Convert.ToInt32(txtAgeRating.Text);
+
+
+            AnStock.Availability = chkAvailable.Checked;
+            Session["AnStock"] = AnStock;
+
+            //navigate to the viewer page
+            Response.Redirect("StockViewer.aspx");
+
+        }
+
+        else
+            lblError.Text = Error;
     }
+
+
 
     
     protected void chkAvailable_CheckedChanged(object sender, EventArgs e)
