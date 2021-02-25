@@ -14,7 +14,7 @@ namespace Testing2
         string CustomerName = "Tobias Jenkins";
         string CustomerId = "2";
         string CustomerEmail = "tjenkins@gmail.com";
-        string CustomerDOB = DateTime.Now.Date.ToString();
+        string CustomerDOB = new DateTime(1950, 01, 01).ToString();
 
         [TestMethod]
         public void InstanceOk()
@@ -122,7 +122,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
             DateTime TestDate;
-            TestDate = DateTime.Now.Date;
+            TestDate = new DateTime(1950, 01, 01);
             TestDate = TestDate.AddYears(-200);
             string CustomerDOB = TestDate.ToString();
             Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
@@ -135,7 +135,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
             DateTime TestDate;
-            TestDate = DateTime.Now.Date;
+            TestDate = new DateTime(1950, 01, 01);
             TestDate = TestDate.AddDays(-1);
             string CustomerDOB = TestDate.ToString();
             Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
@@ -148,7 +148,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
             DateTime TestDate;
-            TestDate = DateTime.Now.Date;
+            TestDate = new DateTime(1950, 01, 01);
             string CustomerDOB = TestDate.ToString();
             Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
             Assert.AreEqual(Error, "");
@@ -160,11 +160,11 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
             DateTime TestDate;
-            TestDate = DateTime.Now.Date;
+            TestDate = new DateTime(1950, 01, 01);
             TestDate = TestDate.AddDays(1);
             string CustomerDOB = TestDate.ToString();
             Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -173,7 +173,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
             DateTime TestDate;
-            TestDate = DateTime.Now.Date;
+            TestDate = new DateTime(1950, 01, 01);
             TestDate = TestDate.AddYears(200);
             string CustomerDOB = TestDate.ToString();
             Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);

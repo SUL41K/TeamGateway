@@ -51,6 +51,8 @@ namespace ClassLibrary
             String Error = "";
 
             DateTime DateTemp;
+            DateTime Date1950;
+            DateTime DateMax;
             if (customerName.Length == 0)
             {
                 Error = Error + "The Customer Name may not be blank : ";
@@ -74,16 +76,16 @@ namespace ClassLibrary
             try
             {
                 DateTemp = Convert.ToDateTime(customerDOB);
-
-                
-                if (DateTemp < DateTime.Now.Date)
+                Date1950 = new DateTime(1950, 01, 01);
+                DateMax = new DateTime(2010, 01, 01);
+                if (DateTemp < Date1950)
                 {
-                    Error = Error + "The date cannot be before the DOB : ";
+                    Error = Error + "The date cannot be before 1950 : ";
                 }
 
-                if (DateTemp > DateTime.Now.Date)
+                if (DateTemp > Date1950 && DateTemp > DateMax)
                 {
-                    Error = Error + "The date cannot be after the DOB : ";
+                    Error = Error + "Please enter a valid DOB : ";
                 }
 
             }
