@@ -155,6 +155,56 @@ namespace Testing2
         }
 
         [TestMethod]
+        public void CustomerDOBMax()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = new DateTime(2010, 01, 01);
+            string CustomerDOB = TestDate.ToString();
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerDOBMaxPlusOne()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = new DateTime(2010, 01, 01);
+            TestDate = TestDate.AddDays(1);
+            string CustomerDOB = TestDate.ToString();
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerDOBMaxLessOne()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = new DateTime(2010, 01, 01);
+            TestDate = TestDate.AddDays(-1);
+            string CustomerDOB = TestDate.ToString();
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerDOBMid()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = new DateTime(1980, 01, 01);
+            string CustomerDOB = TestDate.ToString();
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
         public void CustomerDOBMinPlusOne()
         {
             clsCustomer ACustomer = new clsCustomer();
@@ -173,7 +223,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
             DateTime TestDate;
-            TestDate = new DateTime(1950, 01, 01);
+            TestDate = new DateTime(2010, 01, 01);
             TestDate = TestDate.AddYears(200);
             string CustomerDOB = TestDate.ToString();
             Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
