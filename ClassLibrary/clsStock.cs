@@ -53,7 +53,8 @@ namespace ClassLibrary
         {
             String Error = "";
             DateTime DateTemp;
-            
+            Int32 Age;
+
             if (gameName.Length == 0)
             {
                 Error = Error + "The game name may not be blank : ";
@@ -64,20 +65,18 @@ namespace ClassLibrary
                 Error = Error + "The name must not be less than 30 characters : ";
             }
 
-            if (price.Length == 0)
+
+            try
+            { 
+            if (Convert.ToDecimal(price) == 0)
             {
                 Error = Error + "The total price may not be blank : ";
             }
-
-            try
-            {
-                decimal i = 0;
-                bool result = decimal.TryParse(price, out i);
-
-                if (result == false)
+            if (Convert.ToDecimal(price) > 100)
                 {
-                    Error = Error + "Please enter numerical values : ";
+                    Error = Error + "The price for this game is too high";
                 }
+                
             }
             catch
             {
@@ -105,9 +104,25 @@ namespace ClassLibrary
             }
 
 
+            try
+            {
+                if (Convert.ToInt32(ageRating) == 0)
+                {
+                    Error = Error + "The age may not be blank : ";
+                }
+                if (Convert.ToInt32(ageRating) > 18)
+                {
+                    Error = Error + "Age must not be more than 18 : ";
+                }
 
+            }
+            catch
+            {
+                Error = Error + "Please Enter a Numerical Value : ";
+            }
             return Error;
         }
+        
 
         public Int32 AgeRating
         {
