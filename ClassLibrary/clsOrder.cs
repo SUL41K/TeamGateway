@@ -133,9 +133,28 @@ namespace ClassLibrary
                 Error = Error + "The total price may not be blank : ";
             }
 
+
+
             try
             {
-                decimal i = 0;
+                decimal i;
+                bool result = decimal.TryParse(totalPrice, out i);
+
+                if (i <= 0)
+                {
+                    Error = Error + "The Total Price cannot be negative : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "idk what is wrong : ";
+            }
+
+
+
+            try
+            {
+                decimal i;
                 bool result = decimal.TryParse(totalPrice, out i);  
 
                 if (result == false)

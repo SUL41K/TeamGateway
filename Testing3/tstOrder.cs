@@ -387,7 +387,22 @@ namespace TestingOrder
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
-
+        
+        [TestMethod]
+        public void TotalPriceMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string TotalPrice = "-1"; //this should be ok
+            //invoke the method
+            Error = AnOrder.Valid(GameTitle, TotalPrice, DeliveryDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        
         [TestMethod]
         public void TotalPriceMinPlusOne()
         {
