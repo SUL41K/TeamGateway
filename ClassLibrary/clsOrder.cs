@@ -147,7 +147,7 @@ namespace ClassLibrary
             }
             catch
             {
-                Error = Error + "idk what is wrong : ";
+                Error = Error + "";
             }
 
 
@@ -164,7 +164,7 @@ namespace ClassLibrary
             }
             catch
             {
-                Error = Error + "idk what is wrong : ";
+                Error = Error + "";
             }
 
             try
