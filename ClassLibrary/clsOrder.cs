@@ -67,6 +67,8 @@ namespace ClassLibrary
             }
         }
 
+       // public bool Active { get; set; }
+
         public string Valid(string gGameTitle)
         {
             if (gGameTitle.Length < 1)
