@@ -152,7 +152,7 @@ namespace TestingOrder
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the address no
-            if (AnOrder.GameTitle != "Test Game Title")
+            if (AnOrder.GameTitle != "game1")
             {
                 OK = false;
             }
@@ -196,7 +196,7 @@ namespace TestingOrder
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the address no
-            if (AnOrder.DeliveryDate != Convert.ToDateTime("16/09/2015"))
+            if (AnOrder.DeliveryDate != Convert.ToDateTime("07/03/2021"))
             {
                 OK = false;
             }
