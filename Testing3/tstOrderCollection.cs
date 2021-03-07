@@ -23,7 +23,7 @@ namespace tstOrderCollection
             List<clsOrder> TestList = new List<clsOrder>();
             clsOrder TestItem = new clsOrder();
 
-            TestItem.Active = true;
+            TestItem.Shipment = true;
             TestItem.OrderId = 1;
             TestItem.GameTitle = "game1";
             TestItem.TotalPrice = 1;
@@ -44,7 +44,7 @@ namespace tstOrderCollection
           
             clsOrder TestOrder = new clsOrder();
 
-            TestOrder.Active = true;
+            TestOrder.Shipment = true;
             TestOrder.OrderId = 1;
             TestOrder.GameTitle = "game1";
             TestOrder.TotalPrice = 1;
@@ -63,7 +63,7 @@ namespace tstOrderCollection
             List<clsOrder> TestList = new List<clsOrder>();
             clsOrder TestItem = new clsOrder();
 
-            TestItem.Active = true;
+            TestItem.Shipment = true;
             TestItem.OrderId = 1;
             TestItem.GameTitle = "game1";
             TestItem.TotalPrice = 1;
