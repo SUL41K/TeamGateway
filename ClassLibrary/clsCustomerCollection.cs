@@ -23,6 +23,11 @@ namespace ClassLibrary
                 ACustomer.CustomerId = Convert.ToInt32(DB.DataTable.Rows[Index]["customerId"]);
                 ACustomer.CustomerEmail = Convert.ToString(DB.DataTable.Rows[Index]["customerEmail"]);
                 ACustomer.CustomerDOB = Convert.ToDateTime(DB.DataTable.Rows[Index]["customerDOB"]);
+
+
+                mCustomerList.Add(ACustomer);
+                Index++;
+
             }
 
         }
