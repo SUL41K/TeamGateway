@@ -53,6 +53,8 @@ namespace ClassLibrary
         {
             String Error = "";
             DateTime DateTemp;
+            DateTime DateMax;
+            DateTime DateMin;
             Int32 Age;
 
             if (gameName.Length == 0)
@@ -85,9 +87,10 @@ namespace ClassLibrary
             try
             {
                 DateTemp = Convert.ToDateTime(releaseDate);
-                if (DateTemp < DateTime.Now.Date)
+                DateMin = new DateTime(2001,01,01);
+                if (DateTemp < DateMin)
                 {
-                    Error = Error + "The date cannot be past : ";
+                    Error = Error + "The date cannot be before 2001 : ";
 
                 }
 

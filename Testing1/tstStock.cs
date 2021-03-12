@@ -16,7 +16,7 @@ namespace Testing1
         string gameName = "FIFA 21";
         string Price = "60";
         string AgeRating = "3";
-        string ReleaseDate = DateTime.Now.Date.ToString();
+        string ReleaseDate = new DateTime (2001,01,01).ToString();
 
 
         [TestMethod]
@@ -160,7 +160,7 @@ namespace Testing1
             clsStock AnStock = new clsStock();
             String Error = "";
             DateTime TestDate;
-            TestDate = DateTime.Now.Date;
+            TestDate = new DateTime(2001,01,01);
             TestDate = TestDate.AddYears(-100);
             string ReleaseDate = TestDate.ToString();
             Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
@@ -179,7 +179,7 @@ namespace Testing1
             //create a variable to store the test date data
             DateTime TestDate;
             //set the date totodays date
-            TestDate = DateTime.Now.Date;
+            TestDate = new DateTime(2001,01,01);
             //change the date to whatever the date is less 1 day
             TestDate = TestDate.AddDays(-1);
             //convert the date variable to a string variable
@@ -200,7 +200,7 @@ namespace Testing1
             //create a variable to store the test date data
             DateTime TestDate;
             //set the date totodays date
-            TestDate = DateTime.Now.Date;
+            TestDate = new DateTime(2001,01,01);
             //convert the date variable to a string variable
             string ReleaseDate = TestDate.ToString();
             //invoke the method
@@ -218,8 +218,54 @@ namespace Testing1
             //create a variable to store the test date data
             DateTime TestDate;
             //set the date totodays date
-            TestDate = DateTime.Now.Date;
+            TestDate =  new DateTime(2001,01,01);
             //change the date to whatever the date is plus 1 day
+            TestDate = TestDate.AddDays(1);
+            //convert the date variable to a string variable
+            string ReleaseDate = TestDate.ToString();
+            //invoke the method
+            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ReleaseDateMax()
+        {
+            clsStock AnStock = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string CustomerDOB = TestDate.ToString();
+            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ReleaseDateMaxLessOne()
+        {
+            clsStock AnStock = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(-1);
+            string CustomerDOB = TestDate.ToString();
+            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ReleaseDateExtremeMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is plus 100 years
             TestDate = TestDate.AddDays(1);
             //convert the date variable to a string variable
             string ReleaseDate = TestDate.ToString();
@@ -264,12 +310,6 @@ namespace Testing1
             Assert.AreNotEqual(Error, "");
 
         }
-
-
-
-
-
-
         [TestMethod]
         public void PriceEmpty()
         {
@@ -294,6 +334,16 @@ namespace Testing1
             Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
             
             Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMinLessOne()
+        {
+            clsStock AnStock = new clsStock();
+            String Error = "";
+            string Price = "0";
+            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -342,6 +392,20 @@ namespace Testing1
         }
 
 
+        [TestMethod]
+        public void PriceMid()
+        {
+            //create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Price = "50"; //this should be ok
+            //invoke the method
+            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
 
 
         [TestMethod]
@@ -482,6 +546,24 @@ namespace Testing1
         }
 
         [TestMethod]
+        public void AgeRatingMid()
+        {
+            //create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string AgeRating = "10"; //this should fail
+            //invoke the method
+            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+
+
+        [TestMethod]
         public void AgeRatingExtremeMax()
         {
             clsStock AnStock = new clsStock();
@@ -509,8 +591,6 @@ namespace Testing1
             Assert.AreNotEqual(Error, "");
 
         }
-
-
 
 
         [TestMethod]
