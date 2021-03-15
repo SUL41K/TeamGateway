@@ -39,8 +39,12 @@ public partial class _Default : System.Web.UI.Page
             AnOrder.DeliveryDate = Convert.ToDateTime(DeliveryDate);
             AnOrder.Shipment = chbShipment.Checked;
 
-            Session["AnOrder"] = AnOrder;
-            Response.Redirect("OrderViewer.aspx");
+            clsOrderCollection OrderList = new clsOrderCollection();
+            OrderList.ThisOrder = AnOrder;
+            OrderList.Add();
+
+            
+            Response.Redirect("OrderList.aspx");
         }
         else
         {
