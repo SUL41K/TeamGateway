@@ -9,6 +9,7 @@ using System.Windows.Forms;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -24,20 +25,22 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         string CustomerDOB = txtCustomerDOB.Text;
 
-        string CustomerId = txtCustomerID.Text;
-
         string Error = "";
 
-        Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
+        Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB);
 
         if (Error == "")
         {
+            
             ACustomer.CustomerName = CustomerName;
             ACustomer.CustomerEmail = CustomerEmail;
             ACustomer.CustomerDOB = Convert.ToDateTime(CustomerDOB);
-
-            Session["ACustomer"] = ACustomer;
-            Response.Write("CustomerViewer.aspx");
+            ACustomer.CustomerSubscribe = chkCustomerSubscribe.Checked;
+            clsCustomerCollection CustomerList = new clsCustomerCollection();
+            CustomerList.ThisCustomer = ACustomer;
+            CustomerList.Add();
+            
+            Response.Write("CustomerList.aspx");
 
         }
         else

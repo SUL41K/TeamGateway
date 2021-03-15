@@ -12,7 +12,6 @@ namespace Testing2
         private string TestString = "Some Test String";
         private int TestInt = 123;
         string CustomerName = "Tobias Jenkins";
-        string CustomerId = "2";
         string CustomerEmail = "tjenkins@gmail.com";
         string CustomerDOB = new DateTime(1950, 01, 01).ToString();
 
@@ -30,7 +29,7 @@ namespace Testing2
         {
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
-            Error = ACustomer.Valid(CustomerName,CustomerEmail,CustomerDOB,CustomerId);
+            Error = ACustomer.Valid(CustomerName,CustomerEmail,CustomerDOB);
             Assert.AreEqual(Error, "");
         }
 
@@ -40,7 +39,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
             string CustomerName = "";
-            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -51,7 +50,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
             string CustomerName = "a"; 
-            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB);
             Assert.AreEqual(Error, "");
         }
 
@@ -61,7 +60,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
             string CustomerName = "aa"; 
-            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB);
             Assert.AreEqual(Error, "");
         }
 
@@ -71,7 +70,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
             string CustomerName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB);
             Assert.AreEqual(Error, "");
         }
 
@@ -81,7 +80,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
             string CustomerName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB);
             Assert.AreEqual(Error, "");
         }
 
@@ -91,7 +90,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
             string CustomerName = "aaaaaaaaaaaaaaa";
-            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB);
             Assert.AreEqual(Error, "");
         }
 
@@ -101,7 +100,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
             string CustomerName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -112,7 +111,7 @@ namespace Testing2
             String Error = "";
             string CustomerName = "";
             CustomerName = CustomerName.PadRight(1000, 'a');
-            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -125,7 +124,7 @@ namespace Testing2
             TestDate = new DateTime(1950, 01, 01);
             TestDate = TestDate.AddYears(-200);
             string CustomerDOB = TestDate.ToString();
-            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -138,7 +137,7 @@ namespace Testing2
             TestDate = new DateTime(1950, 01, 01);
             TestDate = TestDate.AddDays(-1);
             string CustomerDOB = TestDate.ToString();
-            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -150,7 +149,7 @@ namespace Testing2
             DateTime TestDate;
             TestDate = new DateTime(1950, 01, 01);
             string CustomerDOB = TestDate.ToString();
-            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB);
             Assert.AreEqual(Error, "");
         }
 
@@ -162,7 +161,7 @@ namespace Testing2
             DateTime TestDate;
             TestDate = new DateTime(2010, 01, 01);
             string CustomerDOB = TestDate.ToString();
-            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB);
             Assert.AreEqual(Error, "");
         }
 
@@ -175,7 +174,7 @@ namespace Testing2
             TestDate = new DateTime(2010, 01, 01);
             TestDate = TestDate.AddDays(1);
             string CustomerDOB = TestDate.ToString();
-            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -188,7 +187,7 @@ namespace Testing2
             TestDate = new DateTime(2010, 01, 01);
             TestDate = TestDate.AddDays(-1);
             string CustomerDOB = TestDate.ToString();
-            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB);
             Assert.AreEqual(Error, "");
         }
 
@@ -200,7 +199,7 @@ namespace Testing2
             DateTime TestDate;
             TestDate = new DateTime(1980, 01, 01);
             string CustomerDOB = TestDate.ToString();
-            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB);
             Assert.AreEqual(Error, "");
         }
 
@@ -213,7 +212,7 @@ namespace Testing2
             TestDate = new DateTime(1950, 01, 01);
             TestDate = TestDate.AddDays(1);
             string CustomerDOB = TestDate.ToString();
-            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB);
             Assert.AreEqual(Error, "");
         }
 
@@ -226,7 +225,7 @@ namespace Testing2
             TestDate = new DateTime(2010, 01, 01);
             TestDate = TestDate.AddYears(200);
             string CustomerDOB = TestDate.ToString();
-            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -239,7 +238,7 @@ namespace Testing2
             string CustomerId = "2";
             string CustomerEmail = "tjenkins@gmail.com";
             string CustomerDOB = "this is not a date";
-            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB);
             Assert.AreNotEqual(Error, "");
 
         }
@@ -250,7 +249,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
             string CustomerEmail = "";
-            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -260,7 +259,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
             string CustomerEmail = "a";
-            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB);
             Assert.AreEqual(Error, "");
         }
 
@@ -270,7 +269,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
             string CustomerEmail = "aa";
-            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB);
             Assert.AreEqual(Error, "");
         }
 
@@ -281,7 +280,7 @@ namespace Testing2
             String Error = "";
             string CustomerEmail = "";
             CustomerEmail = CustomerEmail.PadRight(49, 'a');
-            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB);
             Assert.AreEqual(Error, "");
         }
 
@@ -292,7 +291,7 @@ namespace Testing2
             String Error = "";
             string CustomerEmail = "";
             CustomerEmail = CustomerEmail.PadRight(50, 'a');
-            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB);
             Assert.AreEqual(Error, "");
         }
 
@@ -303,7 +302,7 @@ namespace Testing2
             String Error = "";
             string CustomerEmail = "";
             CustomerEmail = CustomerName.PadRight(51, 'a');
-            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -314,7 +313,7 @@ namespace Testing2
             String Error = "";
             string CustomerEmail = "";
             CustomerEmail = CustomerEmail.PadRight(25, 'a');
-            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB);
             Assert.AreEqual(Error, "");
         }
 
@@ -325,7 +324,7 @@ namespace Testing2
             String Error = "";
             string CustomerEmail = "";
             CustomerEmail = CustomerName.PadRight(1000, 'a');
-            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB, CustomerId);
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB);
             Assert.AreNotEqual(Error, "");
         }
 
