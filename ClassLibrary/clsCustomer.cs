@@ -46,7 +46,7 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string customerName, string customerEmail, string customerDOB, string customerId)
+        public string Valid(string customerName, string customerEmail, string customerDOB)
         {
             String Error = "";
 

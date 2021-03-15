@@ -28,5 +28,77 @@ public partial class _1_List : System.Web.UI.Page
 
     }
 
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        Session["customerId"] = -1;
+        Response.Redirect("ACustomer.aspx");
+    }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        Int32 CustomerId;
+
+        if (lstCustomerList.SelectedIndex != -1)
+        {
+
+            CustomerId = Convert.ToInt32(lstCustomerList.SelectedValue);
+            Session["customerId"] = CustomerId;
+            Response.Redirect("ACustomer.aspx");
+
+        }
+
+        else
+        {
+            lblError.Text = "Please select a record to delete from the list";
+        }
+    }
+
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        Int32 CustomerId;
+        if (lstCustomerList.SelectedIndex != -1)
+        {
+
+            CustomerId = Convert.ToInt32(lstCustomerList.SelectedValue);
+            Session["customerId"] = CustomerId;
+            Response.Redirect("DeleteCustomer.aspx");
+
+        }
+
+        else
+        {
+            lblError.Text = "Please select a record to delete from the list";
+        }
+    }
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        clsCustomerCollection Customers = new clsCustomerCollection();
+        Customers.ReportByName(txtName.Text);
+        lstCustomerList.DataSource = Customers.CustomerList;
+        lstCustomerList.DataValueField = "customerId";
+        lstCustomerList.DataTextField = "customerName";
+        lstCustomerList.DataBind();
+    }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        clsCustomerCollection Customers = new clsCustomerCollection();
+        Customers.ReportByName("");
+        txtName.Text = "";
+        lstCustomerList.DataSource = Customers.CustomerList;
+        lstCustomerList.DataValueField = "customerId";
+        lstCustomerList.DataTextField = "customerName";
+        lstCustomerList.DataBind();
+    }
 }
     
+
+
+
+
+
+
+
