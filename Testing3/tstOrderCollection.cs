@@ -96,5 +96,34 @@ namespace tstOrderCollection
             Assert.AreEqual(AllOrders.ThisOrder, TestItem);
         }
 
+        [TestMethod]
+        public void UpdateMethodOk()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            clsOrder TestItem = new clsOrder();
+            Int32 PrimaryKey = 0;
+
+            TestItem.Shipment = true;
+            TestItem.GameTitle = "game1";
+            TestItem.TotalPrice = 1;
+            TestItem.DeliveryDate = DateTime.Now.Date;
+
+
+            AllOrders.ThisOrder = TestItem;
+            PrimaryKey = AllOrders.Add();
+            TestItem.OrderId = PrimaryKey;
+
+            TestItem.Shipment = false;
+            TestItem.GameTitle = "game2";
+            TestItem.TotalPrice = 2;
+            TestItem.DeliveryDate = DateTime.Now.Date;
+
+
+            AllOrders.ThisOrder = TestItem;
+            AllOrders.Update();
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            Assert.AreEqual(AllOrders.ThisOrder, TestItem);
+        }
+
     }
 }
