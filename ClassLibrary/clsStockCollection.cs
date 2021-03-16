@@ -26,9 +26,9 @@ namespace ClassLibrary
                 AnStock.Availability = Convert.ToBoolean(DB.DataTable.Rows[Index]["Availability"]);
                 AnStock.gameID = Convert.ToInt32(DB.DataTable.Rows[Index]["gameID"]);
                 AnStock.gameName = Convert.ToString(DB.DataTable.Rows[Index]["gameName"]);
-                AnStock.ReleaseDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["ReleaseDate"]);
+                AnStock.ReleaseDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["releaseDate"]);
                 AnStock.Price = Convert.ToDecimal(DB.DataTable.Rows[Index]["Price"]);
-                AnStock.AgeRating = Convert.ToInt32(DB.DataTable.Rows[Index]["AgeRating"]);
+                AnStock.AgeRating = Convert.ToInt32(DB.DataTable.Rows[Index]["ageRating"]);
 
                 mStockList.Add(AnStock);
                 Index++;
@@ -38,7 +38,7 @@ namespace ClassLibrary
            
         }
         List<clsStock> mStockList = new List<clsStock>();
-
+        clsStock mThisStock = new clsStock();
 
         public List<clsStock> StockList
         {
@@ -70,6 +70,38 @@ namespace ClassLibrary
 
 
         }
-        public clsStock ThisStock { get; set; }
+        public clsStock ThisStock
+        {
+            get
+            {
+                return mThisStock;
+            }
+            set
+            {
+                mThisStock = value;
+            }
+        }
+
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@gameName", mThisStock.gameName);
+            DB.AddParameter("@Availability", mThisStock.Availability);
+            DB.AddParameter("@ageRating", mThisStock.Availability);
+            DB.AddParameter("@Price", mThisStock.Price);
+            DB.AddParameter("@releaseDate", mThisStock.ReleaseDate);
+            return DB.Execute("sproc_tblStock_Insert");
+        }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@gameID", mThisStock.gameID);
+            DB.AddParameter("@gameName", mThisStock.gameName);
+            DB.AddParameter("@Availability", mThisStock.Availability);
+            DB.AddParameter("@ageRating", mThisStock.Availability);
+            DB.AddParameter("@Price", mThisStock.Price);
+            DB.AddParameter("@releaseDate", mThisStock.ReleaseDate);
+        }
     }
 }

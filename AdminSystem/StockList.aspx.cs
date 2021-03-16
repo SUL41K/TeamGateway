@@ -28,5 +28,30 @@ public partial class _1_List : System.Web.UI.Page
 
     }
 
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        Session["gameID"] = -1;
+        Response.Redirect("StockDataEntry.aspx");
+    }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        Int32 gameID;
+        if (lstStockList.SelectedIndex != -1)
+        {
+
+            gameID = Convert.ToInt32(lstStockList.SelectedValue);
+            Session["gameID"] = gameID;
+            Response.Redirect("StockDataEntry.aspx");
+
+        }
+
+        else
+        {
+            lblError.Text = "Please select a record to delete from the list";
+        }
+    }
 }
+
 

@@ -45,11 +45,7 @@ namespace Testing1
 
             Assert.AreEqual(AllStock.StockList, TestList);
 
-
-
-
         }
-
 
         [TestMethod]
 
@@ -89,7 +85,59 @@ namespace Testing1
             AllStock.StockList = TestList;
             Assert.AreEqual(AllStock.Count, TestList.Count);
         }
-    
+        
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            clsStockCollection AllStocks = new clsStockCollection();
+            clsStock TestItem = new clsStock();
+            Int32 PrimaryKey = 0;
+            TestItem.Availability = true;
+            TestItem.gameID = 1;
+            TestItem.gameName = "Some Game";
+            TestItem.Price = 10;
+            TestItem.ReleaseDate = DateTime.Now.Date;
+            TestItem.AgeRating = 1;
+            AllStocks.ThisStock = TestItem;
+            PrimaryKey = AllStocks.Add();
+            TestItem.gameID = PrimaryKey;
+            AllStocks.ThisStock.Find(PrimaryKey);
+            Assert.AreEqual(AllStocks.ThisStock, TestItem);
+        }
+
+        [TestMethod]
+        public void UpdateMethodOkay()
+        {
+            clsStockCollection AllStocks = new clsStockCollection();
+            clsStock TestItem = new clsStock();
+            Int32 PrimaryKey = 0;
+            TestItem.Availability = true;
+            TestItem.gameName = "Some Game";
+            TestItem.Price = 10;
+            TestItem.ReleaseDate = DateTime.Now.Date;
+            TestItem.AgeRating = 1;
+            AllStocks.ThisStock = TestItem;
+            PrimaryKey = AllStocks.Add();
+            TestItem.gameID = PrimaryKey;
+            TestItem.Availability = false;
+            TestItem.gameName = "Another Game";
+            TestItem.Price = 20;
+            TestItem.ReleaseDate = DateTime.Now.Date;
+            TestItem.AgeRating = 2;
+            AllStocks.ThisStock = TestItem;
+            AllStocks.Update();
+            AllStocks.ThisStock.Find(PrimaryKey);
+            Assert.AreEqual(AllStocks.ThisStock, TestItem);
+
+
+
+        }
+
+
+
+
+
+
 
     }
 }
