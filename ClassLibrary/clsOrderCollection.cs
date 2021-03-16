@@ -99,6 +99,13 @@ namespace ClassLibrary
 
             DB.Execute("sproc_tblOrder_Update");
         }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("OrderID", mThisOrder.OrderId);
+            DB.Execute("sproc_tblOrder_Delete");
+        }
     }
 
 }

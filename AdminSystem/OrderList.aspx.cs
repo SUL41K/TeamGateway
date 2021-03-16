@@ -18,12 +18,12 @@ public partial class _1_List : System.Web.UI.Page
 
     void DisplayOrders()
     {
-        clsOrderCollection Orders = new clsOrderCollection();
+        ClassLibrary.clsOrderCollection Orders = new ClassLibrary.clsOrderCollection();
         LstOrders.DataSource = Orders.OrderList;
         LstOrders.DataValueField = "OrderID";
         LstOrders.DataValueField = "OrderID";
         LstOrders.DataBind();
-        
+
     }
 
 
@@ -46,12 +46,28 @@ public partial class _1_List : System.Web.UI.Page
         }
         else
         {
-            lblError.Text = "Please select a record to delete from the list";
+            lblError.Text = "Please select a record to edit from the list";
         }
     }
 
     protected void LstOrders_SelectedIndexChanged(object sender, EventArgs e)
     {
 
+    }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        Int32 OrderID;
+
+        if (LstOrders.SelectedIndex != -1)
+        {
+            OrderID = Convert.ToInt32(LstOrders.SelectedValue);
+            Session["OrderID"] = OrderID;
+            Response.Redirect("OrderConfirmDelete.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a record to delete from the list";
+        }
     }
 }
