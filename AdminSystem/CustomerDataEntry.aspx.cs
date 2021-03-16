@@ -9,9 +9,31 @@ using System.Windows.Forms;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
-    
+    Int32 CustomerId;
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        CustomerId = Convert.ToInt32(Session["customerId"]);
+        if (IsPostBack == false)
+        {
+            if (CustomerId != -1)
+            {
+                DisplayCustomer();
+            }
+        }
+
+    }
+
+    void DisplayCustomer()
+    {
+        clsCustomerCollection CustomerBook = new clsCustomerCollection();
+
+        CustomerBook.ThisCustomer.Find(CustomerId);
+        txtCustomerID.Text = CustomerBook.ThisCustomer.CustomerId.ToString();
+        txtCustomerEmail.Text = CustomerBook.ThisCustomer.CustomerEmail;
+        txtCustomerName.Text = CustomerBook.ThisCustomer.CustomerName;
+        txtCustomerDOB.Text = CustomerBook.ThisCustomer.CustomerDOB.ToString();
+        chkCustomerSubscribe.Checked = CustomerBook.ThisCustomer.CustomerSubscribe;
 
     }
 
@@ -31,16 +53,27 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         if (Error == "")
         {
-            
+            ACustomer.CustomerId = CustomerId;
             ACustomer.CustomerName = CustomerName;
             ACustomer.CustomerEmail = CustomerEmail;
             ACustomer.CustomerDOB = Convert.ToDateTime(CustomerDOB);
             ACustomer.CustomerSubscribe = chkCustomerSubscribe.Checked;
             clsCustomerCollection CustomerList = new clsCustomerCollection();
-            CustomerList.ThisCustomer = ACustomer;
-            CustomerList.Add();
-            
-            Response.Write("CustomerList.aspx");
+
+            if (CustomerId == -1)
+            {
+                CustomerList.ThisCustomer = ACustomer;
+                CustomerList.Add();
+            }
+
+            else
+            {
+                CustomerList.ThisCustomer.Find(CustomerId);
+                CustomerList.ThisCustomer = ACustomer;
+                CustomerList.Update();
+            }
+
+            Response.Redirect("CustomerList.aspx");
 
         }
         else
@@ -49,7 +82,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         }
 
 
-        
+
 
     }
 
