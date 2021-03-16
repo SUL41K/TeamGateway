@@ -49,13 +49,13 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string gameID, string gameName, string price, string ageRating, string releaseDate)
+        public string Valid(string gameName, string price, string ageRating, string releaseDate)
         {
             String Error = "";
             DateTime DateTemp;
-            DateTime DateMax;
+
             DateTime DateMin;
-            Int32 Age;
+
 
             if (gameName.Length == 0)
             {

@@ -36,7 +36,7 @@ namespace Testing1
 
             String Error = "";
 
-            Error = AnStock.Valid(gameID,gameName,Price,AgeRating,ReleaseDate);
+            Error = AnStock.Valid(gameName,Price,AgeRating,ReleaseDate);
 
             Assert.AreEqual(Error, "");
 
@@ -50,7 +50,7 @@ namespace Testing1
             clsStock AnStock = new clsStock();
             String Error = "";
             string gameName = "";
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -63,7 +63,7 @@ namespace Testing1
             //create some test data to pass to the method
             string gameName = "a"; //this should be ok
             //invoke the method
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -78,7 +78,7 @@ namespace Testing1
             //create some test data to pass to the method
             string gameName = "aa"; //this should be ok
             //invoke the method
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -93,7 +93,7 @@ namespace Testing1
             //create some test data to pass to the method
             string gameName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
             //invoke the method
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -107,7 +107,7 @@ namespace Testing1
             //create some test data to pass to the method
             string gameName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
             //invoke the method
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -121,7 +121,7 @@ namespace Testing1
             //create some test data to pass to the method
             string gameName = "aaaaaaaaaaaaaaa"; //this should be ok
             //invoke the method
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -136,7 +136,7 @@ namespace Testing1
             //create some test data to pass to the method
             string gameName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should fail
             //invoke the method
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -149,7 +149,7 @@ namespace Testing1
             String Error = "";
             string gameName = "";
             gameName = gameName.PadRight(500, 'a');//should fail
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -163,7 +163,7 @@ namespace Testing1
             TestDate = new DateTime(2001,01,01);
             TestDate = TestDate.AddYears(-100);
             string ReleaseDate = TestDate.ToString();
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -185,7 +185,7 @@ namespace Testing1
             //convert the date variable to a string variable
             string ReleaseDate = TestDate.ToString();
             //invoke the method
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -204,7 +204,7 @@ namespace Testing1
             //convert the date variable to a string variable
             string ReleaseDate = TestDate.ToString();
             //invoke the method
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -224,7 +224,7 @@ namespace Testing1
             //convert the date variable to a string variable
             string ReleaseDate = TestDate.ToString();
             //invoke the method
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -237,7 +237,7 @@ namespace Testing1
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             string CustomerDOB = TestDate.ToString();
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -250,7 +250,7 @@ namespace Testing1
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddDays(-1);
             string CustomerDOB = TestDate.ToString();
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -270,7 +270,7 @@ namespace Testing1
             //convert the date variable to a string variable
             string ReleaseDate = TestDate.ToString();
             //invoke the method
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -291,7 +291,7 @@ namespace Testing1
             //convert the date variable to a string variable
             string ReleaseDate = TestDate.ToString();
             //invoke the method
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -301,12 +301,12 @@ namespace Testing1
         {
             clsStock AnStock = new clsStock();
             String Error = "";
-            string gameID = "3";
+            
             string gameName = "FIFA 21";
             string Price = "60";
             string AgeRating = "3";
             string ReleaseDate = "This is not a date!";
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             Assert.AreNotEqual(Error, "");
 
         }
@@ -316,7 +316,7 @@ namespace Testing1
             clsStock AnStock= new clsStock();
             String Error = "";
             string Price = "";
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -331,7 +331,7 @@ namespace Testing1
             
             string Price = "1"; 
           
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             
             Assert.AreEqual(Error, "");
         }
@@ -342,7 +342,7 @@ namespace Testing1
             clsStock AnStock = new clsStock();
             String Error = "";
             string Price = "0";
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -356,7 +356,7 @@ namespace Testing1
             //create some test data to pass to the method
             string Price = "2"; //this should be ok
             //invoke the method
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -371,7 +371,7 @@ namespace Testing1
             //create some test data to pass to the method
             string Price = "100"; //this should be ok
             //invoke the method
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -386,7 +386,7 @@ namespace Testing1
             //create some test data to pass to the method
             string Price = "99"; //this should be ok
             //invoke the method
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -402,7 +402,7 @@ namespace Testing1
             //create some test data to pass to the method
             string Price = "50"; //this should be ok
             //invoke the method
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -418,7 +418,7 @@ namespace Testing1
             //create some test data to pass to the method
             string Price = "101"; //this should fail
             //invoke the method
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -431,7 +431,7 @@ namespace Testing1
             String Error = "";
             string Price = "";
             Price = Price.PadRight(1000, '1');//should fail
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -442,12 +442,11 @@ namespace Testing1
         {
             clsStock AnStock = new clsStock();
             String Error = "";
-            string gameID = "3";
             string gameName = "FIFA 21";
             string Price = "This is not a Valid figure";
             string AgeRating = "This is not a valid number";
             string ReleaseDate = "This is not a date!";
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             Assert.AreNotEqual(Error, "");
 
         }
@@ -460,7 +459,7 @@ namespace Testing1
             clsStock AnStock = new clsStock();
             String Error = "";
             string AgeRating = "0";
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -475,7 +474,7 @@ namespace Testing1
 
             String AgeRating = "1";
 
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
 
             Assert.AreEqual(Error, "");
         }
@@ -490,7 +489,7 @@ namespace Testing1
             //create some test data to pass to the method
             string Price = "2"; //this should be ok
             //invoke the method
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -506,7 +505,7 @@ namespace Testing1
             //create some test data to pass to the method
             string AgeRating = "18"; //this should be ok
             //invoke the method
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -522,7 +521,7 @@ namespace Testing1
             //create some test data to pass to the method
             string AgeRating = "17"; //this should be ok
             //invoke the method
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -540,7 +539,7 @@ namespace Testing1
             //create some test data to pass to the method
             string AgeRating = "19"; //this should fail
             //invoke the method
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -553,11 +552,11 @@ namespace Testing1
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string AgeRating = "10"; //this should fail
+            string AgeRating = "10"; //this should pass
             //invoke the method
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
 
@@ -570,7 +569,7 @@ namespace Testing1
             String Error = "";
             string AgeRating = "";
             AgeRating = AgeRating.PadRight(100, '1');//should fail
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -582,12 +581,11 @@ namespace Testing1
         {
             clsStock AnStock = new clsStock();
             String Error = "";
-            string gameID = "3";
             string gameName = "FIFA 21";
             string Price = "60";
             string AgeRating = "This is not a valid number";
             string ReleaseDate = "This is not a date!";
-            Error = AnStock.Valid(gameID, gameName, Price, AgeRating, ReleaseDate);
+            Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             Assert.AreNotEqual(Error, "");
 
         }
