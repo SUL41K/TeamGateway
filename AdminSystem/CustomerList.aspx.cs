@@ -32,7 +32,7 @@ public partial class _1_List : System.Web.UI.Page
     protected void btnAdd_Click(object sender, EventArgs e)
     {
         Session["customerId"] = -1;
-        Response.Redirect("ACustomer.aspx");
+        Response.Redirect("CustomerDataEntry.aspx");
     }
 
     protected void btnEdit_Click(object sender, EventArgs e)
@@ -44,7 +44,7 @@ public partial class _1_List : System.Web.UI.Page
 
             CustomerId = Convert.ToInt32(lstCustomerList.SelectedValue);
             Session["customerId"] = CustomerId;
-            Response.Redirect("ACustomer.aspx");
+            Response.Redirect("CustomerDataEntry.aspx");
 
         }
 
