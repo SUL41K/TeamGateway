@@ -129,4 +129,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         Response.Redirect("CustomerList.aspx");
     }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        txtCustomerDOB.Text = "";
+        txtCustomerEmail.Text = "";
+        txtCustomerID.Text = "";
+        txtCustomerName.Text = "";
+        
+    }
 }
