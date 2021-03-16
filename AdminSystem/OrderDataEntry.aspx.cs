@@ -8,9 +8,30 @@ using ClassLibrary;
 
 public partial class _Default : System.Web.UI.Page
 {
+    Int32 OrderID;
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        OrderID = Convert.ToInt32(Session["OrderID"]);
+        if (IsPostBack == false)
+        {
+            if (OrderID != -1)
+            {
+                DisplayOrder();
+            }
+        }
+    }
 
+    private void DisplayOrder()
+    {
+        clsOrderCollection OrderBook = new clsOrderCollection();
+        OrderBook.ThisOrder.Find(OrderID);
+
+        txtOrderId.Text = OrderBook.ThisOrder.OrderId.ToString();
+        txtGameTitle.Text = OrderBook.ThisOrder.GameTitle;
+        txtTotalPrice.Text = OrderBook.ThisOrder.OrderId.ToString();
+        txtDeliveryDate.Text = OrderBook.ThisOrder.DeliveryDate.ToString();
+        chbShipment.Checked = OrderBook.ThisOrder.Shipment;
     }
 
     protected void btnDelete_Click(object sender, EventArgs e)
@@ -33,19 +54,27 @@ public partial class _Default : System.Web.UI.Page
 
         if (Error == "")
         {
-            AnOrder.OrderId = Convert.ToInt32(txtOrderId.Text);
+            AnOrder.OrderId = OrderID;
             AnOrder.GameTitle = GameTitle;
             AnOrder.TotalPrice = Convert.ToDecimal(TotalPrice);
-            AnOrder.DeliveryDate = Convert.ToDateTime(DeliveryDate);
             AnOrder.Shipment = chbShipment.Checked;
+            AnOrder.DeliveryDate = Convert.ToDateTime(DeliveryDate);
 
-            Session["AnOrder"] = AnOrder;
-            Response.Redirect("OrderViewer.aspx");
+            clsOrderCollection OrderList = new clsOrderCollection();
+            if (OrderID == -1)
+            {
+                OrderList.ThisOrder = AnOrder;
+                OrderList.Add();
+            }
+            else
+            {
+                OrderList.ThisOrder.Find(OrderID);
+                OrderList.ThisOrder = AnOrder;
+                OrderList.Update();
+            }
+            Response.Redirect("OrderList.aspx");
         }
-        else
-        {
-            lblError.Text = Error;
-        }
+        else lblError.Text = Error;
     }
 
 

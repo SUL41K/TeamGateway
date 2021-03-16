@@ -21,8 +21,37 @@ public partial class _1_List : System.Web.UI.Page
         clsOrderCollection Orders = new clsOrderCollection();
         LstOrders.DataSource = Orders.OrderList;
         LstOrders.DataValueField = "OrderID";
-        LstOrders.DataValueField = "gameTitle";
+        LstOrders.DataValueField = "OrderID";
         LstOrders.DataBind();
         
+    }
+
+
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        Session["OrderId"] = -1;
+        Response.Redirect("OrderDataEntry.aspx");
+    }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        Int32 OrderID;
+
+        if (LstOrders.SelectedIndex != -1)
+        {
+            OrderID = Convert.ToInt32(LstOrders.SelectedValue);
+            Session["OrderID"] = OrderID;
+            Response.Redirect("OrderDataEntry.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a record to delete from the list";
+        }
+    }
+
+    protected void LstOrders_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
     }
 }
