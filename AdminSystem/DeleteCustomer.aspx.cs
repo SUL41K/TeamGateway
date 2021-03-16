@@ -22,4 +22,9 @@ public partial class DeleteCustomer : System.Web.UI.Page
         CustomerBook.Delete();
         Response.Redirect("CustomerList.aspx");
     }
+
+    protected void btnNo_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("CustomerList.aspx");
+    }
 }
