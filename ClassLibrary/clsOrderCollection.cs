@@ -46,32 +46,9 @@ namespace ClassLibrary
 
         public clsOrderCollection()
         {
-            Int32 Index = 0;
-            Int32 RecordCount = 0;
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tblOrder_SelectAll");
-            RecordCount = DB.Count;
-
-            while (Index < RecordCount)
-            {
-
-                clsOrder AnOrder = new clsOrder();
-
-                AnOrder.OrderId = Convert.ToInt32(DB.DataTable.Rows[Index]["orderID"]);
-                AnOrder.GameTitle = Convert.ToString(DB.DataTable.Rows[Index]["gameTitle"]);
-                AnOrder.TotalPrice = Convert.ToDecimal(DB.DataTable.Rows[Index]["totalPrice"]);
-                AnOrder.DeliveryDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["deliveryDate"]);
-                AnOrder.Shipment = Convert.ToBoolean(DB.DataTable.Rows[Index]["shipment"]);
-
-                mOrderList.Add(AnOrder);
-
-                Index++;
-            }
-
-
-
-
-
+            PopulateArray(DB);
         }
 
         public int Add()
@@ -98,6 +75,43 @@ namespace ClassLibrary
             DB.AddParameter("@Shipment", mThisOrder.Shipment);
 
             DB.Execute("sproc_tblOrder_Update");
+        }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("OrderID", mThisOrder.OrderId);
+            DB.Execute("sproc_tblOrder_Delete");
+        }
+
+        public void ReportByGameTitle(string GameTitle)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@GameTitle", GameTitle);
+            DB.Execute("sproc_tblOrder_FilterByGameTitle");
+            PopulateArray(DB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            Int32 Index = 0;
+            Int32 RecordCount;
+            RecordCount = DB.Count;
+            mOrderList = new List<clsOrder>();
+
+            while (Index < RecordCount)
+            {
+                clsOrder AnOrder = new clsOrder();
+
+                AnOrder.OrderId = Convert.ToInt32(DB.DataTable.Rows[Index]["orderID"]);
+                AnOrder.GameTitle = Convert.ToString(DB.DataTable.Rows[Index]["gameTitle"]);
+                AnOrder.TotalPrice = Convert.ToDecimal(DB.DataTable.Rows[Index]["totalPrice"]);
+                AnOrder.DeliveryDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["deliveryDate"]);
+                AnOrder.Shipment = Convert.ToBoolean(DB.DataTable.Rows[Index]["shipment"]);
+
+                mOrderList.Add(AnOrder);
+                Index++;
+            }
         }
     }
 
