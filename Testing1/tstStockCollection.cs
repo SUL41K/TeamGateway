@@ -128,11 +128,29 @@ namespace Testing1
             AllStocks.Update();
             AllStocks.ThisStock.Find(PrimaryKey);
             Assert.AreEqual(AllStocks.ThisStock, TestItem);
+        }
+
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsStockCollection AllStocks = new clsStockCollection();
+            clsStock TestItem = new clsStock();
+            Int32 PrimaryKey = 0;
+            TestItem.Availability = true;
+            TestItem.gameName = "Some Game";
+            TestItem.Price = 10;
+            TestItem.ReleaseDate = DateTime.Now.Date;
+            TestItem.AgeRating = 1;
+            AllStocks.ThisStock = TestItem;
+            PrimaryKey = AllStocks.Add();
+            TestItem.gameID = PrimaryKey;
+            AllStocks.Delete();
+            Boolean Found = AllStocks.ThisStock.Find(PrimaryKey);
+            Assert.IsFalse(Found);
 
 
 
         }
-
 
 
 
