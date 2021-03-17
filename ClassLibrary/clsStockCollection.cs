@@ -103,5 +103,12 @@ namespace ClassLibrary
             DB.AddParameter("@Price", mThisStock.Price);
             DB.AddParameter("@releaseDate", mThisStock.ReleaseDate);
         }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@gameID", mThisStock.gameID);
+            DB.Execute("sproc_tblStock_Delete");
+        }
     }
 }

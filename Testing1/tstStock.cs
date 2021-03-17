@@ -12,7 +12,6 @@ namespace Testing1
         private string TestString = "Some Test String";
         private int TestInt = 123;
         private decimal TestDec = 456;
-        string gameID = "3";
         string gameName = "FIFA 21";
         string Price = "60";
         string AgeRating = "3";
