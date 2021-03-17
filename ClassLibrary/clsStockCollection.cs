@@ -17,7 +17,7 @@ namespace ClassLibrary
 
             DB.Execute("sproc_tblStock_SelectAll");
 
-            RecordCount = DB.Count;
+            PopulateArray(DB);
 
             while (Index < RecordCount)
             {
@@ -110,5 +110,41 @@ namespace ClassLibrary
             DB.AddParameter("@gameID", mThisStock.gameID);
             DB.Execute("sproc_tblStock_Delete");
         }
+
+        public void ReportBygameName(string gameName)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@gameName", gameName);
+            DB.Execute("sproc_tblStock_FilteredByGameName");
+            PopulateArray(DB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            Int32 Index = 0;
+            Int32 RecordCount;
+            RecordCount = DB.Count;
+            mStockList = new List<clsStock>();
+            while (Index < RecordCount)
+            {
+                clsStock AnStock = new clsStock();
+
+                AnStock.Availability = Convert.ToBoolean(DB.DataTable.Rows[Index]["Availability"]);
+                AnStock.gameID = Convert.ToInt32(DB.DataTable.Rows[Index]["gameID"]);
+                AnStock.gameName = Convert.ToString(DB.DataTable.Rows[Index]["gameName"]);
+                AnStock.ReleaseDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["releaseDate"]);
+                AnStock.Price = Convert.ToDecimal(DB.DataTable.Rows[Index]["Price"]);
+                AnStock.AgeRating = Convert.ToInt32(DB.DataTable.Rows[Index]["ageRating"]);
+
+                mStockList.Add(AnStock);
+                Index++;
+
+
+
+
+
+            }
+        }
+
     }
 }

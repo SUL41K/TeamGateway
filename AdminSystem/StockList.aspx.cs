@@ -67,6 +67,27 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please Select a record to delete from the list";
         }
     }
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        clsStockCollection Stocks = new clsStockCollection();
+        Stocks.ReportBygameName(txtFilter.Text);
+        lstStockList.DataSource = Stocks.StockList;
+        lstStockList.DataValueField = "gameID";
+        lstStockList.DataTextField = "gameName";
+        lstStockList.DataBind();
+    }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        clsStockCollection Stocks = new clsStockCollection();
+        Stocks.ReportBygameName("");
+        txtFilter.Text = "";
+        lstStockList.DataSource = Stocks.StockList;
+        lstStockList.DataValueField = "gameID";
+        lstStockList.DataTextField = "gameName";
+        lstStockList.DataBind();
+    }
 }
 
 

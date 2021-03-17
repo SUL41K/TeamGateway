@@ -26,11 +26,11 @@ namespace Testing1
             //create an instance of the class we want to create
             clsStockCollection AllStock = new clsStockCollection();
             List<clsStock> TestList = new List<clsStock>();
-            
+
             clsStock TestItem = new clsStock();
 
             RDate = new DateTime(06 / 10 / 2020);
-            Prc = new Decimal (60);
+            Prc = new Decimal(60);
 
             TestItem.Availability = true;
             TestItem.gameID = 3;
@@ -85,7 +85,7 @@ namespace Testing1
             AllStock.StockList = TestList;
             Assert.AreEqual(AllStock.Count, TestList.Count);
         }
-        
+
         [TestMethod]
         public void AddMethodOK()
         {
@@ -148,10 +148,57 @@ namespace Testing1
             Boolean Found = AllStocks.ThisStock.Find(PrimaryKey);
             Assert.IsFalse(Found);
 
+        }
 
+        [TestMethod]
+
+        public void ReportByGameNameOK()
+        {
+            clsStockCollection AllStocks = new clsStockCollection();
+            clsStockCollection FilteredStock = new clsStockCollection();
+            FilteredStock.ReportBygameName("");
+            Assert.AreEqual(AllStocks.Count, FilteredStock.Count);
 
         }
 
+        [TestMethod]
+
+        public void ReportByGameNameNoneFound()
+        {
+            clsStockCollection FilteredStocks = new clsStockCollection();
+            FilteredStocks.ReportBygameName("XXXXX XXXXX");
+            Assert.AreEqual(0, FilteredStocks.Count);
+        }
+
+        [TestMethod]
+
+        public void ReportByGameNameTestDataFound()
+        {
+            clsStockCollection FilteredStocks = new clsStockCollection();
+            Boolean OK = true;
+            FilteredStocks.ReportBygameName("XXXXXXXXXX XXXXXXXXXX");
+
+            if (FilteredStocks.Count == 2)
+            {
+                if (FilteredStocks.StockList[0].gameID != 36)
+                {
+                    OK = false;
+                }
+                
+                if (FilteredStocks.StockList[1].gameID != 37)
+                {
+                    OK = false;
+                }
+
+                }
+            else
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        } 
+    
 
 
 
