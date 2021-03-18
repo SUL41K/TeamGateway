@@ -68,7 +68,7 @@ namespace ClassLibrary
         {
             clsDataConnection DB = new clsDataConnection();
 
-            DB.AddParameter("@OrderID", mThisOrder.OrderId);
+            DB.AddParameter("@OrderID", mThisOrder.orderID);
             DB.AddParameter("@GameTitle", mThisOrder.GameTitle);
             DB.AddParameter("@TotalPrice", mThisOrder.TotalPrice);
             DB.AddParameter("@DeliveryDate", mThisOrder.DeliveryDate);
@@ -80,7 +80,7 @@ namespace ClassLibrary
         public void Delete()
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("OrderID", mThisOrder.OrderId);
+            DB.AddParameter("orderID", mThisOrder.orderID);
             DB.Execute("sproc_tblOrder_Delete");
         }
 
@@ -103,7 +103,7 @@ namespace ClassLibrary
             {
                 clsOrder AnOrder = new clsOrder();
 
-                AnOrder.OrderId = Convert.ToInt32(DB.DataTable.Rows[Index]["orderID"]);
+                AnOrder.orderID = Convert.ToInt32(DB.DataTable.Rows[Index]["orderID"]);
                 AnOrder.GameTitle = Convert.ToString(DB.DataTable.Rows[Index]["gameTitle"]);
                 AnOrder.TotalPrice = Convert.ToDecimal(DB.DataTable.Rows[Index]["totalPrice"]);
                 AnOrder.DeliveryDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["deliveryDate"]);

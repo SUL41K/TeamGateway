@@ -25,8 +25,8 @@ namespace TestingOrder
         {
             clsOrder AnOrder = new clsOrder();
             int TestData = TestInt;
-            AnOrder.OrderId = TestData;
-            Assert.AreEqual(AnOrder.OrderId, TestData);
+            AnOrder.orderID = TestData;
+            Assert.AreEqual(AnOrder.orderID, TestData);
         }
 
         [TestMethod]
@@ -116,7 +116,7 @@ namespace TestingOrder
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the address no
-            if (AnOrder.OrderId != 21)
+            if (AnOrder.orderID != 21)
             {
                 OK = false;
             }
@@ -153,7 +153,7 @@ namespace TestingOrder
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the address no
-            if (AnOrder.OrderId != 21)
+            if (AnOrder.orderID != 21)
             {
                 OK = false;
             }
