@@ -136,12 +136,14 @@ namespace ClassLibrary
 
         public bool Find(Int32 customerId)
         {
+            //create new instance of the dataconnection class
             clsDataConnection DB = new clsDataConnection();
-
+            //add customer id parameter to customer Id table field
             DB.AddParameter("@customerId", customerId);
-
+            //execute stored procedure
             DB.Execute("sproc_tblCustomer_FilterBycustomerId");
 
+            //search and return all table fields if count == 1
             if (DB.Count == 1)
             {
 

@@ -9,6 +9,7 @@ using System.Windows.Forms;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    //page scope variable to make sure CustomerId is Int32
     Int32 CustomerId;
 
     protected void Page_Load(object sender, EventArgs e)
@@ -26,8 +27,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     void DisplayCustomer()
     {
+        //create new instance of customer collection class
         clsCustomerCollection CustomerBook = new clsCustomerCollection();
-
+        //find customer Id and updates all textboxes and checkbox to show the attributes of that customer
         CustomerBook.ThisCustomer.Find(CustomerId);
         txtCustomerID.Text = CustomerBook.ThisCustomer.CustomerId.ToString();
         txtCustomerEmail.Text = CustomerBook.ThisCustomer.CustomerEmail;
@@ -39,20 +41,22 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnCreate_Click(object sender, EventArgs e)
     {
+        //create new instance of clsCustomer
         clsCustomer ACustomer = new clsCustomer();
-
+        //create string variables of textboxes so they can be updated
         string CustomerName = txtCustomerName.Text;
 
         string CustomerEmail = txtCustomerEmail.Text;
 
         string CustomerDOB = txtCustomerDOB.Text;
-
+        //create test data for error message
         string Error = "";
-
+        //Applies valid method to string variable
         Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerDOB);
 
         if (Error == "")
         {
+            //captures all of the attributes of the customer
             ACustomer.CustomerId = CustomerId;
             ACustomer.CustomerName = CustomerName;
             ACustomer.CustomerEmail = CustomerEmail;
@@ -60,9 +64,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
             ACustomer.CustomerSubscribe = chkCustomerSubscribe.Checked;
             clsCustomerCollection CustomerList = new clsCustomerCollection();
 
+            //checks if a new record i.e. -1 has been added
             if (CustomerId == -1)
             {
                 CustomerList.ThisCustomer = ACustomer;
+                //add new customer using add method
                 CustomerList.Add();
             }
 
@@ -70,14 +76,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
             {
                 CustomerList.ThisCustomer.Find(CustomerId);
                 CustomerList.ThisCustomer = ACustomer;
+                //if customer exists, then update selected customer
                 CustomerList.Update();
             }
 
+            //redirect to customer list
             Response.Redirect("CustomerList.aspx");
 
         }
         else
         {
+            //Else display error message in error label
             lblError.Text = Error;
         }
 
@@ -94,18 +103,18 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnFind_Click(object sender, EventArgs e)
     {
 
-        
+        //create new instance of clsCustomer
         clsCustomer ACustomer = new clsCustomer();
 
         Int32 CustomerId;
 
         Boolean Found = false;
-
+        //convert customerId textbox to int32 data type
         CustomerId = Convert.ToInt32(txtCustomerID.Text);
 
         Found = ACustomer.Find(CustomerId);
 
-
+        //if record exists, update blank textboxes to customer's details
         if (Found == true)
         {
             txtCustomerDOB.Text = ACustomer.CustomerDOB.ToString();
@@ -114,8 +123,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         }
 
+        //if not found then open a message box with error message
         else if (Found == false)
         {
+            //pop up box shows and displays error message
             System.Windows.Forms.MessageBox.Show("This record does not exist");
         }
 
@@ -127,11 +138,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
+        //redirect back to customer list
         Response.Redirect("CustomerList.aspx");
     }
 
     protected void btnClear_Click(object sender, EventArgs e)
     {
+        //make all text fields blank if any data is within them
         txtCustomerDOB.Text = "";
         txtCustomerEmail.Text = "";
         txtCustomerID.Text = "";
