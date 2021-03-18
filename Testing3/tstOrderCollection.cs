@@ -178,7 +178,7 @@ namespace tstOrderCollection
                 {
                     OK = false;
                 }
-                if (FilteredOrders.OrderList[1].OrderId != 1064)
+                if (FilteredOrders.OrderList[1].OrderId != 13)
                 {
                     OK = false;
                 }

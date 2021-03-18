@@ -101,6 +101,29 @@ namespace TestingOrder
     [TestClass]
     public class tstOrderFind
     {
+
+        [TestMethod]
+        public void TestOrderIdOK()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 OrderId = 21;
+            //invoke the method
+            Found = AnOrder.Find(OrderId);
+            //check the address no
+            if (AnOrder.OrderId != 21)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
         [TestMethod]
         public void FindMethodOK()
         {
@@ -196,7 +219,7 @@ namespace TestingOrder
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the address no
-            if (AnOrder.DeliveryDate != Convert.ToDateTime("15/03/2021"))
+            if (AnOrder.DeliveryDate != Convert.ToDateTime("18/03/2021"))
             {
                 OK = false;
             }
