@@ -9,7 +9,7 @@ namespace ClassLibrary
 
         clsOrder mThisOrder = new clsOrder();
 
-        public List<clsOrder> OrderList
+        public List<clsOrder> OrderList //get and set methods
         {
             get
             {
@@ -47,11 +47,11 @@ namespace ClassLibrary
         public clsOrderCollection()
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.Execute("sproc_tblOrder_SelectAll");
+            DB.Execute("sproc_tblOrder_SelectAll"); //execute procedure to show all
             PopulateArray(DB);
         }
 
-        public int Add()
+        public int Add() //add all changes that were input
         {
             clsDataConnection DB = new clsDataConnection();
 
@@ -60,13 +60,13 @@ namespace ClassLibrary
             DB.AddParameter("@DeliveryDate", mThisOrder.DeliveryDate);
             DB.AddParameter("@Shipment", mThisOrder.Shipment);
 
-            return DB.Execute("sproc_tblOrder_Insert");
+            return DB.Execute("sproc_tblOrder_Insert"); //redirect
             
         }
 
         public void Update()
         {
-            clsDataConnection DB = new clsDataConnection();
+            clsDataConnection DB = new clsDataConnection(); //update all attributes input by user
 
             DB.AddParameter("@orderID", mThisOrder.orderID);
             DB.AddParameter("@GameTitle", mThisOrder.GameTitle);
@@ -81,7 +81,7 @@ namespace ClassLibrary
         {
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("orderID", mThisOrder.orderID);
-            DB.Execute("sproc_tblOrder_Delete");
+            DB.Execute("sproc_tblOrder_Delete"); //add paramiter to delete using this procedure
         }
 
         public void ReportByGameTitle(string GameTitle)
@@ -89,7 +89,7 @@ namespace ClassLibrary
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@GameTitle", GameTitle);
             DB.Execute("sproc_tblOrder_FilterByGameTitle");
-            PopulateArray(DB);
+            PopulateArray(DB); //filter by game title and show it
         }
 
         void PopulateArray(clsDataConnection DB)
@@ -109,7 +109,7 @@ namespace ClassLibrary
                 AnOrder.DeliveryDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["deliveryDate"]);
                 AnOrder.Shipment = Convert.ToBoolean(DB.DataTable.Rows[Index]["shipment"]);
 
-                mOrderList.Add(AnOrder);
+                mOrderList.Add(AnOrder); //add all attributes and give ID +1 to make a new Order
                 Index++;
             }
         }

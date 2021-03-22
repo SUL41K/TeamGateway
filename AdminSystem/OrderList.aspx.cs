@@ -10,7 +10,7 @@ public partial class _1_List : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (IsPostBack == false)
+        if (IsPostBack == false) //if a postback was made then load page
         {
             DisplayOrders();
         }
@@ -21,8 +21,8 @@ public partial class _1_List : System.Web.UI.Page
         ClassLibrary.clsOrderCollection Orders = new ClassLibrary.clsOrderCollection();
         LstOrders.DataSource = Orders.OrderList;
         LstOrders.DataValueField = "OrderID";
-        LstOrders.DataTextField = "GameTitle";
-        LstOrders.DataBind();
+        LstOrders.DataTextField = "GameTitle"; //display game titles on viewpage form
+        LstOrders.DataBind(); //bind ID and titles
 
     }
 
@@ -30,21 +30,21 @@ public partial class _1_List : System.Web.UI.Page
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
-        Session["OrderId"] = -1;
-        Response.Redirect("OrderDataEntry.aspx");
+        Session["OrderId"] = -1;  //set session to -1 to check for errors later
+        Response.Redirect("OrderDataEntry.aspx"); //redirect
     }
 
     protected void btnEdit_Click(object sender, EventArgs e)
     {
         Int32 OrderID;
 
-        if (LstOrders.SelectedIndex != -1)
+        if (LstOrders.SelectedIndex != -1) //nothing should be selected so we can edit the variables
         {
             OrderID = Convert.ToInt32(LstOrders.SelectedValue);
             Session["OrderID"] = OrderID;
             Response.Redirect("OrderDataEntry.aspx");
         }
-        else
+        else //write error text if this somehow happens
         {
             lblError.Text = "Please select a record to edit from the list";
         }
@@ -59,13 +59,13 @@ public partial class _1_List : System.Web.UI.Page
     {
         Int32 OrderID;
 
-        if (LstOrders.SelectedIndex != -1)
+        if (LstOrders.SelectedIndex != -1) //if ID is not set proceed to delete
         {
             OrderID = Convert.ToInt32(LstOrders.SelectedValue);
             Session["OrderID"] = OrderID;
             Response.Redirect("OrderConfirmDelete.aspx");
         }
-        else
+        else //error if something goes wrong
         {
             lblError.Text = "Please select a record to delete from the list";
         }
@@ -74,11 +74,11 @@ public partial class _1_List : System.Web.UI.Page
     protected void btnApply_Click(object sender, EventArgs e)
     {
         clsOrderCollection Orders = new clsOrderCollection();
-        Orders.ReportByGameTitle(txbGameTitle.Text);
+        Orders.ReportByGameTitle(txbGameTitle.Text); //sort by game title
         LstOrders.DataSource = Orders.OrderList;
 
         LstOrders.DataValueField = "OrderID";
-        LstOrders.DataTextField = "GameTitle";
+        LstOrders.DataTextField = "GameTitle"; //filter by game title with stored name
         LstOrders.DataBind();
     }
 
@@ -91,7 +91,7 @@ public partial class _1_List : System.Web.UI.Page
         LstOrders.DataSource = Orders.OrderList;
 
         LstOrders.DataValueField = "OrderID";
-        LstOrders.DataTextField = "GameTitle";
+        LstOrders.DataTextField = "GameTitle"; //sort by unfiltered game titles
         LstOrders.DataBind();
     }
 }

@@ -30,7 +30,7 @@ namespace tstOrderCollection
             TestItem.DeliveryDate = DateTime.Now.Date;
 
             TestList.Add(TestItem);
-            AllOrders.OrderList = TestList;
+            AllOrders.OrderList = TestList; //check if all atributes match the ID
             Assert.AreEqual(AllOrders.OrderList, TestList);
            
         }
@@ -38,7 +38,7 @@ namespace tstOrderCollection
 
 
         [TestMethod]
-        public void ThisOrderPropertyOK()
+        public void ThisOrderPropertyOK() //check if the attributes are valid
         {
             clsOrderCollection AllOrders = new clsOrderCollection();
           
@@ -57,7 +57,7 @@ namespace tstOrderCollection
         }
 
         [TestMethod]
-        public void ListAndCountOK()
+        public void ListAndCountOK() //check if count is working
         {
             clsOrderCollection AllOrders = new clsOrderCollection();
             List<clsOrder> TestList = new List<clsOrder>();
@@ -76,7 +76,7 @@ namespace tstOrderCollection
         }
 
         [TestMethod]
-        public void AddMethodOk()
+        public void AddMethodOk() //check if add works
         {
             clsOrderCollection AllOrders = new clsOrderCollection();
             clsOrder TestItem = new clsOrder();
@@ -89,7 +89,7 @@ namespace tstOrderCollection
             TestItem.DeliveryDate = DateTime.Now.Date;
 
             AllOrders.ThisOrder = TestItem;
-            PrimaryKey = AllOrders.Add();
+            PrimaryKey = AllOrders.Add();  //add attributes to 1 key
             TestItem.orderID = PrimaryKey;
             AllOrders.ThisOrder.Find(PrimaryKey);
 
@@ -104,7 +104,7 @@ namespace tstOrderCollection
             Int32 PrimaryKey = 0;
 
             TestItem.Shipment = true;
-            TestItem.GameTitle = "game1";
+            TestItem.GameTitle = "game1"; //first set of attributes
             TestItem.TotalPrice = 1;
             TestItem.DeliveryDate = DateTime.Now.Date;
 
@@ -114,15 +114,15 @@ namespace tstOrderCollection
             TestItem.orderID = PrimaryKey;
 
             TestItem.Shipment = false;
-            TestItem.GameTitle = "game2";
+            TestItem.GameTitle = "game2"; //second set of attributes
             TestItem.TotalPrice = 2;
             TestItem.DeliveryDate = DateTime.Now.Date;
 
 
             AllOrders.ThisOrder = TestItem;
-            AllOrders.Update();
+            AllOrders.Update(); 
             AllOrders.ThisOrder.Find(PrimaryKey);
-            Assert.AreEqual(AllOrders.ThisOrder, TestItem);
+            Assert.AreEqual(AllOrders.ThisOrder, TestItem);//check if they are the same
         }
 
         [TestMethod]
@@ -144,12 +144,12 @@ namespace tstOrderCollection
             AllOrders.ThisOrder.Find(PrimaryKey);
             AllOrders.Delete();
 
-            Boolean Found = AllOrders.ThisOrder.Find(PrimaryKey);
+            Boolean Found = AllOrders.ThisOrder.Find(PrimaryKey); //check if everything in this ID deleted
             Assert.IsFalse(Found);
         }
 
         [TestMethod]
-        public void ReportByGameTitleMethodOK()
+        public void ReportByGameTitleMethodOK() //check if title method works
         {
             clsOrderCollection AllOrders = new clsOrderCollection();
             clsOrderCollection FilteredOrders = new clsOrderCollection();
@@ -158,7 +158,7 @@ namespace tstOrderCollection
         }
 
         [TestMethod]
-        public void ReportByGameTitleNoneFound()
+        public void ReportByGameTitleNoneFound() //check if non existant title is found
         {
             clsOrderCollection FilteredOrders = new clsOrderCollection();
             FilteredOrders.ReportByGameTitle("Game Title 1");
@@ -166,13 +166,21 @@ namespace tstOrderCollection
         }
 
         [TestMethod]
-        public void ReportByGameTitleTestDataFound()
+        public void ReportByGameTitleValid() //check if title is valid
+        {
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            FilteredOrders.ReportByGameTitle("Game Title 2");
+            Assert.AreEqual(0, FilteredOrders.Count);
+        }
+
+        [TestMethod]
+        public void ReportByGameTitleTestDataFound() //check if Gmod is found in location 10 and 13
         {
             clsOrderCollection FilteredOrders = new clsOrderCollection();
             Boolean OK = true;
             FilteredOrders.ReportByGameTitle("Gmod");
 
-            if (FilteredOrders.Count == 2)
+            if (FilteredOrders.Count == 2) //two instances should be found
             {
                 if (FilteredOrders.OrderList[0].orderID != 10)
                 {
@@ -187,7 +195,7 @@ namespace tstOrderCollection
             {
                 OK = false;
             }
-            Assert.IsTrue(OK);
+            Assert.IsTrue(OK); //assert if two are found
         }
 
     }

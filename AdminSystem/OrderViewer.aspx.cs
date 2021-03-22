@@ -10,10 +10,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        clsOrder AnOrder = new clsOrder();
+        clsOrder AnOrder = new clsOrder(); //display all attributes with spaces between 
         AnOrder = (clsOrder)Session["AnOrder"];
         Response.Write(AnOrder.orderID);
-        Response.Write("<br>");
+        Response.Write("<br>"); //blank space
         Response.Write(AnOrder.GameTitle);
         Response.Write("<br>");
         Response.Write(AnOrder.TotalPrice);
