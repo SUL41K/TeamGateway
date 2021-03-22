@@ -29,7 +29,7 @@ public partial class _Default : System.Web.UI.Page
 
         txtOrderId.Text = OrderBook.ThisOrder.orderID.ToString();
         txtGameTitle.Text = OrderBook.ThisOrder.GameTitle;
-        txtTotalPrice.Text = OrderBook.ThisOrder.TotalPrice.ToString();
+        txtTotalPrice.Text = OrderBook.ThisOrder.orderID.ToString();
         txtDeliveryDate.Text = OrderBook.ThisOrder.DeliveryDate.ToString();
         chbShipment.Checked = OrderBook.ThisOrder.Shipment;
     }
