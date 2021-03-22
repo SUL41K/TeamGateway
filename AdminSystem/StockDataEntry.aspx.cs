@@ -8,6 +8,7 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    // page scope variable implemented to assign Int32 to primary key
     Int32 gameID;
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -24,8 +25,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     private void DisplayStock()
     {
+        //creates new instant of Stock collection class
         clsStockCollection StockBook = new clsStockCollection();
-
+        //Finds gameID and updates all textboxes & textboxes to show relevant attributes
         StockBook.ThisStock.Find(gameID);
         txtGameID.Text = StockBook.ThisStock.gameID.ToString();
         txtGameName.Text = StockBook.ThisStock.gameName;
@@ -38,8 +40,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
 
+        //create new instance of clsStock
         clsStock AnStock = new clsStock();
-
+        //create a string variables of all textboxes that can be updated
         string gameName = txtGameName.Text;
 
         string ReleaseDate = txtDate.Text;
@@ -49,15 +52,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string AgeRating = txtAgeRating.Text;
 
 
-
+        //create test data for error message
         string Error = "";
 
+        //implements valid method to string variable
         Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
 
         if (Error == "")
         {
 
-
+            //captures all of the attributes of the stock
             AnStock.gameID = gameID;
             AnStock.gameName = gameName;
             AnStock.ReleaseDate = Convert.ToDateTime(ReleaseDate);
@@ -67,9 +71,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
             clsStockCollection StockList = new clsStockCollection();
 
+            //checks for a new record. For example -1
             if (gameID == -1)
             {
                 StockList.ThisStock = AnStock;
+                //adds new stock using the add method
                 StockList.Add();
             }
 
@@ -77,6 +83,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             {
                 StockList.ThisStock.Find(gameID);
                 StockList.ThisStock = AnStock;
+                //if statement to view if record exists then updates the stock
                 StockList.Update();
             }
 
@@ -87,6 +94,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         else
         {
+            //else statement to convey error message
             lblError.Text = Error;
         }
     }
@@ -101,11 +109,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnFind_Click(object sender, EventArgs e)
     {
+        //creates new instance of clsStock
         clsStock AnStock = new clsStock();
         Int32 gameID;
         Boolean Found = false;
+        //convert gameID textbox into the Int32 Data Type
         gameID = Convert.ToInt32(txtGameID.Text);
         Found = AnStock.Find(gameID);
+        //if statement. If found to be true then it updates the details
         if (Found == true)
         {
             txtGameID.Text = AnStock.gameID.ToString();
@@ -114,8 +125,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtPrice.Text = AnStock.Price.ToString();
             txtDate.Text = AnStock.ReleaseDate.ToString();
         }
+
+        //if data is not found then open up a error message
         else if (Found == false)
         {
+            //message to convey record not found
             System.Windows.Forms.MessageBox.Show("This record does not exist");
         }
 

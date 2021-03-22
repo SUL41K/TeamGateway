@@ -20,8 +20,6 @@ namespace Testing1
         [TestMethod]
         public void StockListOK()
         {
-            DateTime RDate;
-            Decimal Prc;
 
             //create an instance of the class we want to create
             clsStockCollection AllStock = new clsStockCollection();
@@ -29,51 +27,7 @@ namespace Testing1
 
             clsStock TestItem = new clsStock();
 
-            RDate = new DateTime(06 / 10 / 2020);
-            Prc = new Decimal(60);
-
-            TestItem.Availability = true;
-            TestItem.gameID = 3;
-            TestItem.gameName = "FIFA 21";
-            TestItem.Price = Prc;
-            TestItem.ReleaseDate = RDate;
-            TestItem.AgeRating = 3;
-
-            TestList.Add(TestItem);
-
-            AllStock.StockList = TestList;
-
-            Assert.AreEqual(AllStock.StockList, TestList);
-
-        }
-
-        [TestMethod]
-
-        public void ThisStockPropertyOK()
-        {
-            clsStockCollection AllStock = new clsStockCollection();
-            clsStock TestStock = new clsStock();
-
-
-            TestStock.Availability = true;
-            TestStock.gameID = 3;
-            TestStock.gameName = "FIFA 21";
-            TestStock.Price = 60;
-            TestStock.ReleaseDate = new DateTime(06 / 10 / 2020);
-            TestStock.AgeRating = 3;
-
-            AllStock.ThisStock = TestStock;
-            Assert.AreEqual(AllStock.ThisStock, TestStock);
-
-        }
-
-        [TestMethod]
-        public void ListAndCountOK()
-        {
-            clsStockCollection AllStock = new clsStockCollection();
-            List<clsStock> TestList = new List<clsStock>();
-            clsStock TestItem = new clsStock();
-
+            //Creating test data for each attribute
             TestItem.Availability = true;
             TestItem.gameID = 3;
             TestItem.gameName = "FIFA 21";
@@ -82,16 +36,68 @@ namespace Testing1
             TestItem.AgeRating = 3;
 
             TestList.Add(TestItem);
+
             AllStock.StockList = TestList;
+
+            //test to see if it passes
+            Assert.AreEqual(AllStock.StockList, TestList);
+
+        }
+
+        [TestMethod]
+
+        public void ThisStockPropertyOK()
+        {
+            //create an instance of the class we want to create
+            clsStockCollection AllStock = new clsStockCollection();
+            clsStock TestStock = new clsStock();
+
+            //Creating test data for each attribute
+            TestStock.Availability = true;
+            TestStock.gameID = 3;
+            TestStock.gameName = "FIFA 21";
+            TestStock.Price = 60;
+            TestStock.ReleaseDate = new DateTime(06 / 10 / 2020);
+            TestStock.AgeRating = 3;
+
+            AllStock.ThisStock = TestStock;
+            //test to see if it passes
+            Assert.AreEqual(AllStock.ThisStock, TestStock);
+
+        }
+
+        [TestMethod]
+        public void ListAndCountOK()
+        {
+            //create an instance of the class we want to create
+            clsStockCollection AllStock = new clsStockCollection();
+            List<clsStock> TestList = new List<clsStock>();
+            clsStock TestItem = new clsStock();
+
+            //Creating test data for each attribute
+            TestItem.Availability = true;
+            TestItem.gameID = 3;
+            TestItem.gameName = "FIFA 21";
+            TestItem.Price = 60;
+            TestItem.ReleaseDate = new DateTime(06 / 10 / 2020);
+            TestItem.AgeRating = 3;
+
+            
+            TestList.Add(TestItem);
+            AllStock.StockList = TestList;
+            //test to see if it passes
             Assert.AreEqual(AllStock.Count, TestList.Count);
         }
 
         [TestMethod]
         public void AddMethodOK()
         {
+            //create an instance of the class we want to create
             clsStockCollection AllStocks = new clsStockCollection();
             clsStock TestItem = new clsStock();
             Int32 PrimaryKey = 0;
+
+            //Creating test data for each attribute
             TestItem.Availability = true;
             TestItem.gameID = 1;
             TestItem.gameName = "Some Game";
@@ -102,15 +108,20 @@ namespace Testing1
             PrimaryKey = AllStocks.Add();
             TestItem.gameID = PrimaryKey;
             AllStocks.ThisStock.Find(PrimaryKey);
+
+            //test to see if it passes
             Assert.AreEqual(AllStocks.ThisStock, TestItem);
         }
 
         [TestMethod]
         public void UpdateMethodOkay()
         {
+            //create an instance of the class we want to create
             clsStockCollection AllStocks = new clsStockCollection();
             clsStock TestItem = new clsStock();
             Int32 PrimaryKey = 0;
+
+            //Creating test data for each attribute
             TestItem.Availability = true;
             TestItem.gameName = "Some Game";
             TestItem.Price = 10;
@@ -127,15 +138,19 @@ namespace Testing1
             AllStocks.ThisStock = TestItem;
             AllStocks.Update();
             AllStocks.ThisStock.Find(PrimaryKey);
+            //test to see if it passes
             Assert.AreEqual(AllStocks.ThisStock, TestItem);
         }
 
         [TestMethod]
         public void DeleteMethodOK()
         {
+            //create an instance of the class we want to create
             clsStockCollection AllStocks = new clsStockCollection();
             clsStock TestItem = new clsStock();
             Int32 PrimaryKey = 0;
+
+            //Creating test data for each attribute
             TestItem.Availability = true;
             TestItem.gameName = "Some Game";
             TestItem.Price = 10;
@@ -146,6 +161,7 @@ namespace Testing1
             TestItem.gameID = PrimaryKey;
             AllStocks.Delete();
             Boolean Found = AllStocks.ThisStock.Find(PrimaryKey);
+            //test to see if it passes
             Assert.IsFalse(Found);
 
         }
@@ -154,9 +170,11 @@ namespace Testing1
 
         public void ReportByGameNameOK()
         {
+            //create an instance of the class we want to create
             clsStockCollection AllStocks = new clsStockCollection();
             clsStockCollection FilteredStock = new clsStockCollection();
             FilteredStock.ReportBygameName("");
+            //test to see if it passes
             Assert.AreEqual(AllStocks.Count, FilteredStock.Count);
 
         }
@@ -165,8 +183,10 @@ namespace Testing1
 
         public void ReportByGameNameNoneFound()
         {
+            //create an instance of the class we want to create
             clsStockCollection FilteredStocks = new clsStockCollection();
             FilteredStocks.ReportBygameName("XXXXX XXXXX");
+            //test to see if it passes
             Assert.AreEqual(0, FilteredStocks.Count);
         }
 
@@ -174,10 +194,11 @@ namespace Testing1
 
         public void ReportByGameNameTestDataFound()
         {
+            //create an instance of the class we want to create
             clsStockCollection FilteredStocks = new clsStockCollection();
             Boolean OK = true;
             FilteredStocks.ReportBygameName("XXXXXXXXXX XXXXXXXXXX");
-
+            //Test to find 2 of the same data within the DB
             if (FilteredStocks.Count == 2)
             {
                 if (FilteredStocks.StockList[0].gameID != 36)
@@ -196,6 +217,7 @@ namespace Testing1
                 OK = false;
             }
 
+            //test to see if it passes
             Assert.IsTrue(OK);
         } 
     

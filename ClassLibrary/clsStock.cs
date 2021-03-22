@@ -182,10 +182,15 @@ namespace ClassLibrary
 
         public bool Find(int gameID)
         {
+
+            //create new instance of the dataconnection class
             clsDataConnection DB = new clsDataConnection();
+            //add gameID paramater to gameID field in DB
             DB.AddParameter("@gameID", gameID);
+            //Execute relevant stored procedure
             DB.Execute("sproc_tblStock_FilterByGameID");
 
+            //search & return all table fields if count is == 1
             if (DB.Count == 1)
             {
             mGameID = Convert.ToInt32(DB.DataTable.Rows[0]["gameID"]);
