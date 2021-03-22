@@ -4,13 +4,13 @@ namespace ClassLibrary
 {
     public class clsOrder
     {
-        private int mOrderID;
+        private int mOrderID;   //private variables to be used later
         private string mGameTitle;
         private Decimal mTotalPrice;
         private DateTime mDeliveryDate;
         private Boolean mShipment;
 
-        public int orderID
+        public int orderID //get and set methods
         {
             get
             {
@@ -67,21 +67,21 @@ namespace ClassLibrary
             }
         }
 
-       // public bool Active { get; set; }
+       
 
-        public string Valid(string gGameTitle)
+        public string Valid(string gGameTitle) //test if game title is valid
         {
-            if (gGameTitle.Length < 1)
+            if (gGameTitle.Length < 1) //bigger than 1
             {
                 return "description cannot be blank";
             }
 
-            if (gGameTitle.Length > 50)
+            if (gGameTitle.Length > 50) //smaller than 50
             {
                 return "description cannot be more then 50 characters";
             }
 
-            else
+            else  //else no error was found
             {
                 return "";
             }
@@ -93,9 +93,9 @@ namespace ClassLibrary
 
             DB.AddParameter("OrderID", orderID);
 
-            DB.Execute("sproc_tblOrder_FilterByOrderId");
+            DB.Execute("sproc_tblOrder_FilterByOrderId"); //filter ID to find what we need
 
-            if (DB.Count == 1)
+            if (DB.Count == 1) //if its found then get all other variables converted
             {
 
                 mOrderID = Convert.ToInt32(DB.DataTable.Rows[0]["orderID"]);
@@ -106,7 +106,7 @@ namespace ClassLibrary
 
                 return true;
             }
-            else
+            else //else return that ID was not found
             {
                 return false;
             }
@@ -114,7 +114,7 @@ namespace ClassLibrary
 
         public string Valid(string gameTitle, string totalPrice, string deliveryDate)
         {
-            String Error = "";
+            String Error = ""; //checking if all variables are valid
 
             DateTime DateTemp;
 
@@ -137,7 +137,7 @@ namespace ClassLibrary
 
 
 
-            try
+            try //try method as if statements could crash program
             {
                 decimal i;
                 bool result = decimal.TryParse(totalPrice, out i);
@@ -171,7 +171,7 @@ namespace ClassLibrary
 
             try
             {
-                DateTemp = Convert.ToDateTime(deliveryDate);
+                DateTemp = Convert.ToDateTime(deliveryDate); //convert
                 if (DateTemp < DateTime.Now.Date)
                 {
                     Error = Error + "The Date cannot be in the past : ";
@@ -188,7 +188,7 @@ namespace ClassLibrary
                 Error = Error + "The Date was not a valid date : ";
             }
 
-            return Error;
+            return Error; //return blank if no error found or text if a error was found
         }
     }
 }

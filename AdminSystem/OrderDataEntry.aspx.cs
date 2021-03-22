@@ -12,12 +12,12 @@ public partial class _Default : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        orderID = Convert.ToInt32(Session["OrderID"]);
-        if (IsPostBack == false)
+        orderID = Convert.ToInt32(Session["OrderID"]); //database to 
+        if (IsPostBack == false) //if not found
         {
-            if (orderID != -1)
+            if (orderID != -1) //if orderID didn't update
             {
-                DisplayOrder();
+                DisplayOrder(); //all variables
             }
         }
     }
@@ -25,7 +25,7 @@ public partial class _Default : System.Web.UI.Page
     private void DisplayOrder()
     {
         clsOrderCollection OrderBook = new clsOrderCollection();
-        OrderBook.ThisOrder.Find(orderID);
+        OrderBook.ThisOrder.Find(orderID); //find ID and get all atributes connected
 
         txtOrderId.Text = OrderBook.ThisOrder.orderID.ToString();
         txtGameTitle.Text = OrderBook.ThisOrder.GameTitle;
@@ -36,7 +36,7 @@ public partial class _Default : System.Web.UI.Page
 
     protected void btnDelete_Click(object sender, EventArgs e)
     {
-        Response.Redirect("OrderConfirmDelete.aspx");
+        Response.Redirect("OrderConfirmDelete.aspx"); //redirect
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
@@ -48,11 +48,11 @@ public partial class _Default : System.Web.UI.Page
         string TotalPrice = txtTotalPrice.Text;
         string DeliveryDate = txtDeliveryDate.Text;
         string Shipment = chbShipment.Text;
-        string Error = "";
+        string Error = "";   //check if any attributes are blank
 
         Error = AnOrder.Valid(GameTitle, TotalPrice, DeliveryDate);
 
-        if (Error == "")
+        if (Error == "") //if its blank attach it again
         {
             AnOrder.orderID = orderID;
             AnOrder.GameTitle = GameTitle;
@@ -61,20 +61,20 @@ public partial class _Default : System.Web.UI.Page
             AnOrder.DeliveryDate = Convert.ToDateTime(DeliveryDate);
 
             clsOrderCollection OrderList = new clsOrderCollection();
-            if (orderID == -1)
+            if (orderID == -1) //if ID was not set make another ID
             {
                 OrderList.ThisOrder = AnOrder;
                 OrderList.Add();
             }
-            else
+            else //or find the attributes connected to the ID
             {
                 OrderList.ThisOrder.Find(orderID);
                 OrderList.ThisOrder = AnOrder;
                 OrderList.Update();
             }
-            Response.Redirect("OrderList.aspx");
+            Response.Redirect("OrderList.aspx");  //redirect
         }
-        else lblError.Text = Error;
+        else lblError.Text = Error;   //if something unexpected happens write error
     }
 
 
@@ -97,11 +97,11 @@ public partial class _Default : System.Web.UI.Page
         Int32 OrderId;
         Boolean Found = false;
 
-        OrderId = Convert.ToInt32(txtOrderId.Text);
+        OrderId = Convert.ToInt32(txtOrderId.Text); //convert to int
 
-        Found = AnOrder.Find(OrderId);
+        Found = AnOrder.Find(OrderId); //if ID found set true
 
-        if (Found == true)
+        if (Found == true) //get all other attributes if ID found
         {
             txtGameTitle.Text = AnOrder.GameTitle;
             txtTotalPrice.Text = AnOrder.TotalPrice.ToString();
