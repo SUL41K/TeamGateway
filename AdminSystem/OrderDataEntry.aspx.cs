@@ -8,14 +8,14 @@ using ClassLibrary;
 
 public partial class _Default : System.Web.UI.Page
 {
-    Int32 OrderID;
+    Int32 orderID;
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        OrderID = Convert.ToInt32(Session["OrderID"]);
+        orderID = Convert.ToInt32(Session["OrderID"]);
         if (IsPostBack == false)
         {
-            if (OrderID != -1)
+            if (orderID != -1)
             {
                 DisplayOrder();
             }
@@ -25,11 +25,11 @@ public partial class _Default : System.Web.UI.Page
     private void DisplayOrder()
     {
         clsOrderCollection OrderBook = new clsOrderCollection();
-        OrderBook.ThisOrder.Find(OrderID);
+        OrderBook.ThisOrder.Find(orderID);
 
-        txtOrderId.Text = OrderBook.ThisOrder.OrderId.ToString();
+        txtOrderId.Text = OrderBook.ThisOrder.orderID.ToString();
         txtGameTitle.Text = OrderBook.ThisOrder.GameTitle;
-        txtTotalPrice.Text = OrderBook.ThisOrder.OrderId.ToString();
+        txtTotalPrice.Text = OrderBook.ThisOrder.orderID.ToString();
         txtDeliveryDate.Text = OrderBook.ThisOrder.DeliveryDate.ToString();
         chbShipment.Checked = OrderBook.ThisOrder.Shipment;
     }
@@ -54,21 +54,21 @@ public partial class _Default : System.Web.UI.Page
 
         if (Error == "")
         {
-            AnOrder.OrderId = OrderID;
+            AnOrder.orderID = orderID;
             AnOrder.GameTitle = GameTitle;
             AnOrder.TotalPrice = Convert.ToDecimal(TotalPrice);
             AnOrder.Shipment = chbShipment.Checked;
             AnOrder.DeliveryDate = Convert.ToDateTime(DeliveryDate);
 
             clsOrderCollection OrderList = new clsOrderCollection();
-            if (OrderID == -1)
+            if (orderID == -1)
             {
                 OrderList.ThisOrder = AnOrder;
                 OrderList.Add();
             }
             else
             {
-                OrderList.ThisOrder.Find(OrderID);
+                OrderList.ThisOrder.Find(orderID);
                 OrderList.ThisOrder = AnOrder;
                 OrderList.Update();
             }
@@ -109,5 +109,10 @@ public partial class _Default : System.Web.UI.Page
             chbShipment.Checked = AnOrder.Shipment;
 
         }
+    }
+
+    protected void txtTotalPrice_TextChanged(object sender, EventArgs e)
+    {
+
     }
 }

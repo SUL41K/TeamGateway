@@ -4,21 +4,21 @@ namespace ClassLibrary
 {
     public class clsOrder
     {
-        private int mOrderId;
+        private int mOrderID;
         private string mGameTitle;
         private Decimal mTotalPrice;
         private DateTime mDeliveryDate;
         private Boolean mShipment;
 
-        public int OrderId
+        public int orderID
         {
             get
             {
-                return mOrderId;
+                return mOrderID;
             }
             set
             {
-                mOrderId = value;
+                mOrderID = value;
             }
         }
 
@@ -87,18 +87,18 @@ namespace ClassLibrary
             }
         }
 
-        public bool Find(int OrderId)
+        public bool Find(int orderID)
         {
             clsDataConnection DB = new clsDataConnection();
 
-            DB.AddParameter("OrderId", OrderId);
+            DB.AddParameter("OrderID", orderID);
 
             DB.Execute("sproc_tblOrder_FilterByOrderId");
 
             if (DB.Count == 1)
             {
 
-                mOrderId = Convert.ToInt32(DB.DataTable.Rows[0]["orderId"]);
+                mOrderID = Convert.ToInt32(DB.DataTable.Rows[0]["orderID"]);
                 mGameTitle = Convert.ToString(DB.DataTable.Rows[0]["gameTitle"]);
                 mTotalPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["totalPrice"]);
                 mDeliveryDate = Convert.ToDateTime(DB.DataTable.Rows[0]["deliveryDate"]);

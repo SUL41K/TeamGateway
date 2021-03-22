@@ -21,7 +21,7 @@ public partial class _1_List : System.Web.UI.Page
         ClassLibrary.clsOrderCollection Orders = new ClassLibrary.clsOrderCollection();
         LstOrders.DataSource = Orders.OrderList;
         LstOrders.DataValueField = "OrderID";
-        LstOrders.DataValueField = "OrderID";
+        LstOrders.DataTextField = "GameTitle";
         LstOrders.DataBind();
 
     }

@@ -24,7 +24,7 @@ namespace tstOrderCollection
             clsOrder TestItem = new clsOrder();
 
             TestItem.Shipment = true;
-            TestItem.OrderId = 1;
+            TestItem.orderID = 1;
             TestItem.GameTitle = "game1";
             TestItem.TotalPrice = 1;
             TestItem.DeliveryDate = DateTime.Now.Date;
@@ -45,7 +45,7 @@ namespace tstOrderCollection
             clsOrder TestOrder = new clsOrder();
 
             TestOrder.Shipment = true;
-            TestOrder.OrderId = 1;
+            TestOrder.orderID = 1;
             TestOrder.GameTitle = "game1";
             TestOrder.TotalPrice = 1;
             TestOrder.DeliveryDate = DateTime.Now.Date;
@@ -64,7 +64,7 @@ namespace tstOrderCollection
             clsOrder TestItem = new clsOrder();
 
             TestItem.Shipment = true;
-            TestItem.OrderId = 1;
+            TestItem.orderID = 1;
             TestItem.GameTitle = "game1";
             TestItem.TotalPrice = 1;
             TestItem.DeliveryDate = DateTime.Now.Date;
@@ -83,14 +83,14 @@ namespace tstOrderCollection
             Int32 PrimaryKey = 0;
 
             TestItem.Shipment = true;
-            TestItem.OrderId = 1;
+            TestItem.orderID = 1;
             TestItem.GameTitle = "game1";
             TestItem.TotalPrice = 1;
             TestItem.DeliveryDate = DateTime.Now.Date;
 
             AllOrders.ThisOrder = TestItem;
             PrimaryKey = AllOrders.Add();
-            TestItem.OrderId = PrimaryKey;
+            TestItem.orderID = PrimaryKey;
             AllOrders.ThisOrder.Find(PrimaryKey);
 
             Assert.AreEqual(AllOrders.ThisOrder, TestItem);
@@ -111,7 +111,7 @@ namespace tstOrderCollection
 
             AllOrders.ThisOrder = TestItem;
             PrimaryKey = AllOrders.Add();
-            TestItem.OrderId = PrimaryKey;
+            TestItem.orderID = PrimaryKey;
 
             TestItem.Shipment = false;
             TestItem.GameTitle = "game2";
@@ -133,14 +133,14 @@ namespace tstOrderCollection
             Int32 PrimaryKey = 0;
 
             TestItem.Shipment = true;
-            TestItem.OrderId = 1;
+            TestItem.orderID = 1;
             TestItem.GameTitle = "game1";
             TestItem.TotalPrice = 1;
             TestItem.DeliveryDate = DateTime.Now.Date;
 
             AllOrders.ThisOrder = TestItem;
             PrimaryKey = AllOrders.Add();
-            TestItem.OrderId = PrimaryKey;
+            TestItem.orderID = PrimaryKey;
             AllOrders.ThisOrder.Find(PrimaryKey);
             AllOrders.Delete();
 
@@ -174,11 +174,11 @@ namespace tstOrderCollection
 
             if (FilteredOrders.Count == 2)
             {
-                if (FilteredOrders.OrderList[0].OrderId != 10)
+                if (FilteredOrders.OrderList[0].orderID != 10)
                 {
                     OK = false;
                 }
-                if (FilteredOrders.OrderList[1].OrderId != 1064)
+                if (FilteredOrders.OrderList[1].orderID != 13)
                 {
                     OK = false;
                 }

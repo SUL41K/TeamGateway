@@ -22,7 +22,7 @@
         <asp:TextBox ID="txtGameTitle" runat="server" height="27px" width="200px"></asp:TextBox>
         <br />
         <asp:Label ID="lblTotalPrice" runat="server" Text="Total Price: " height="27px" width="200px"></asp:Label>
-        <asp:TextBox ID="txtTotalPrice" runat="server" height="27px" width="200px"></asp:TextBox>
+        <asp:TextBox ID="txtTotalPrice" runat="server" height="27px" width="200px" OnTextChanged="txtTotalPrice_TextChanged"></asp:TextBox>
         <br />
         <asp:Label ID="lblDeliveryDate" runat="server" Text="Delivery Date: " height="27px" width="200px"></asp:Label>
         <asp:TextBox ID="txtDeliveryDate" runat="server" height="27px" width="200px"></asp:TextBox>
@@ -40,9 +40,9 @@
         <asp:Label ID="lblError" runat="server"></asp:Label>
         <br />
         <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="btnEdit" runat="server" Text="Edit" OnClick="btnEdit_Click" />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="btnEdit" runat="server" Text="Extra Button" OnClick="btnEdit_Click" />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" />
     </form>
 </body>
