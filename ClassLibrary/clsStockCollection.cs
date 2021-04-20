@@ -69,9 +69,10 @@ namespace ClassLibrary
 
             set
             {
-                
 
 
+
+            }
         }
         public clsStock ThisStock
         {
