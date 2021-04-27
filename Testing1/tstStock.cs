@@ -511,7 +511,7 @@ namespace Testing1
             //string variable to store any error message
             String Error = "";
             //creates test data
-            string AgeRating = "0";
+            string AgeRating = "2";
             //invoke the method
             Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             //test to see that the result is correct
@@ -528,7 +528,7 @@ namespace Testing1
             //string variable to store any error message
             String Error = "";
             //creates test data
-            String AgeRating = "1";//this should pass
+            string AgeRating = "3";//this should pass
             //invoke the method
             Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             //test to see that the result is correct
@@ -543,7 +543,7 @@ namespace Testing1
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string Price = "2"; //this should be ok
+            string AgeRating = "2"; //this should be ok
             //invoke the method
             Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             //test to see that the result is correct

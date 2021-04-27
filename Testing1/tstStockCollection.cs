@@ -103,7 +103,7 @@ namespace Testing1
             TestItem.gameName = "Some Game";
             TestItem.Price = 10;
             TestItem.ReleaseDate = DateTime.Now.Date;
-            TestItem.AgeRating = 1;
+            TestItem.AgeRating = 3;
             AllStocks.ThisStock = TestItem;
             PrimaryKey = AllStocks.Add();
             TestItem.gameID = PrimaryKey;
@@ -126,7 +126,7 @@ namespace Testing1
             TestItem.gameName = "Some Game";
             TestItem.Price = 10;
             TestItem.ReleaseDate = DateTime.Now.Date;
-            TestItem.AgeRating = 1;
+            TestItem.AgeRating = 3;
             AllStocks.ThisStock = TestItem;
             PrimaryKey = AllStocks.Add();
             TestItem.gameID = PrimaryKey;
@@ -134,13 +134,14 @@ namespace Testing1
             TestItem.gameName = "Another Game";
             TestItem.Price = 20;
             TestItem.ReleaseDate = DateTime.Now.Date;
-            TestItem.AgeRating = 2;
+            TestItem.AgeRating = 3;
             AllStocks.ThisStock = TestItem;
             AllStocks.Update();
             AllStocks.ThisStock.Find(PrimaryKey);
             //test to see if it passes
             Assert.AreEqual(AllStocks.ThisStock, TestItem);
         }
+       
 
         [TestMethod]
         public void DeleteMethodOK()
@@ -155,7 +156,7 @@ namespace Testing1
             TestItem.gameName = "Some Game";
             TestItem.Price = 10;
             TestItem.ReleaseDate = DateTime.Now.Date;
-            TestItem.AgeRating = 1;
+            TestItem.AgeRating = 3;
             AllStocks.ThisStock = TestItem;
             PrimaryKey = AllStocks.Add();
             TestItem.gameID = PrimaryKey;

@@ -28,7 +28,7 @@
         <br />
         <br />
         <asp:Label ID="lblAgeRating" runat="server" Text="Age Rating:" width="90px"></asp:Label>
-        <asp:TextBox ID="txtAgeRating" runat="server" width="125px"></asp:TextBox>
+        <asp:TextBox ID="txtAgeRating" runat="server" width="125px" OnTextChanged="txtAgeRating_TextChanged"></asp:TextBox>
         <br />
         <br />
         <asp:CheckBox ID="chkAvailable" runat="server" Text="Available" OnCheckChanged="chkAvailable_CheckedChange" />
