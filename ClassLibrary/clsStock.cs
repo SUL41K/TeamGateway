@@ -56,6 +56,8 @@ namespace ClassLibrary
 
             DateTime DateMin;
 
+            int MinAge = 2;
+
 
             if (gameName.Length == 0)
             {
@@ -76,13 +78,13 @@ namespace ClassLibrary
             }
             if (Convert.ToDecimal(price) > 100)
                 {
-                    Error = Error + "The price for this game is too high";
+                    Error = Error + "The price for this game is too high!: ";
                 }
                 
             }
             catch
             {
-                Error = Error + "Incorrect Values entered : ";
+                Error = Error + "Please enter a value for Price : ";
             }
             try
             {
@@ -103,15 +105,15 @@ namespace ClassLibrary
 
             catch
             {
-                Error = Error + "The date was not a valid date : ";
+                Error = Error + "Please enter a valid Date : ";
             }
 
 
             try
             {
-                if (Convert.ToInt32(ageRating) == 0)
+                if (Convert.ToInt32(ageRating) < 3)
                 {
-                    Error = Error + "The age may not be blank : ";
+                    Error = Error + "The age may not be less than 3  : ";
                 }
                 if (Convert.ToInt32(ageRating) > 18)
                 {
@@ -121,7 +123,7 @@ namespace ClassLibrary
             }
             catch
             {
-                Error = Error + "Please Enter a Numerical Value : ";
+                Error = Error + "Please enter a value for the Age Rating! : ";
             }
             return Error;
         }

@@ -93,7 +93,7 @@ namespace ClassLibrary
             //implements paramaters to the correct fields to create new stock
             DB.AddParameter("@gameName", mThisStock.gameName);
             DB.AddParameter("@Availability", mThisStock.Availability);
-            DB.AddParameter("@ageRating", mThisStock.Availability);
+            DB.AddParameter("@ageRating", mThisStock.AgeRating);
             DB.AddParameter("@Price", mThisStock.Price);
             DB.AddParameter("@releaseDate", mThisStock.ReleaseDate);
             //execute correct stored procedures which allow for data to be implemented
@@ -108,7 +108,7 @@ namespace ClassLibrary
             DB.AddParameter("@gameID", mThisStock.gameID);
             DB.AddParameter("@gameName", mThisStock.gameName);
             DB.AddParameter("@Availability", mThisStock.Availability);
-            DB.AddParameter("@ageRating", mThisStock.Availability);
+            DB.AddParameter("@ageRating", mThisStock.AgeRating);
             DB.AddParameter("@Price", mThisStock.Price);
             DB.AddParameter("@releaseDate", mThisStock.ReleaseDate);
             //execute correct stored procedures which allow for data to be updated
