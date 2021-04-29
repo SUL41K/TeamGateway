@@ -41,7 +41,7 @@
         <br />
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="btnEdit" runat="server" Text="Extra Button" OnClick="btnEdit_Click" />
+        <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnEdit_Click" />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" />
     </form>
