@@ -186,22 +186,27 @@ namespace Testing2
             FilteredCustomers.ReportByName("Tobias Jenkins");
             if (FilteredCustomers.Count == 4)
             {
-                if(FilteredCustomers.CustomerList[0].CustomerId != 3)
+                if (FilteredCustomers.CustomerList[0].CustomerId != 3)
                 {
                     OK = false;
                 }
 
-                if (FilteredCustomers.CustomerList[0].CustomerId != 8)
+                if (FilteredCustomers.CustomerList[1].CustomerId != 8)
                 {
                     OK = false;
                 }
 
-                if (FilteredCustomers.CustomerList[0].CustomerId != 10)
+                if (FilteredCustomers.CustomerList[2].CustomerId != 10)
                 {
                     OK = false;
                 }
 
-                if (FilteredCustomers.CustomerList[0].CustomerId != 11)
+                if (FilteredCustomers.CustomerList[3].CustomerId != 11)
+                {
+                    OK = false;
+                }
+
+                else
                 {
                     OK = false;
                 }

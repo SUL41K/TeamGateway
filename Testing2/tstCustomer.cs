@@ -340,7 +340,6 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
             string CustomerName = "Tobias Jenkins";
-            string CustomerId = "2";
             string CustomerEmail = "tjenkins@gmail.com";
             string CustomerDOB = "this is not a date";
             //invoke method

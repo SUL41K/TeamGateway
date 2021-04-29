@@ -15,21 +15,23 @@ namespace ClassLibrary
             clsDataConnection DB = new clsDataConnection();
             //excecute select all stored procedure
             DB.Execute("sproc_tblCustomer_SelectAll");
+            //populates array
             PopulateArray(DB);
 
             //creates new instance of clsCustomer
-            //Adds all data entered in each field to create a new customer. Adds customer and increments index of each attribute
+
             while (Index < RecordCount)
             {
+                //Adds all data entered in each field to create a new customer
                 clsCustomer ACustomer = new clsCustomer();
                 ACustomer.CustomerSubscribe = Convert.ToBoolean(DB.DataTable.Rows[Index]["customerSubscribe"]);
                 ACustomer.CustomerName = Convert.ToString(DB.DataTable.Rows[Index]["customerName"]);
                 ACustomer.CustomerId = Convert.ToInt32(DB.DataTable.Rows[Index]["customerId"]);
                 ACustomer.CustomerEmail = Convert.ToString(DB.DataTable.Rows[Index]["customerEmail"]);
                 ACustomer.CustomerDOB = Convert.ToDateTime(DB.DataTable.Rows[Index]["customerDOB"]);
-
-
+                //Add the new customer to list
                 mCustomerList.Add(ACustomer);
+                //Increments index value of customer attributes
                 Index++;
 
             }
