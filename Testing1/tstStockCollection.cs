@@ -24,9 +24,7 @@ namespace Testing1
             //create an instance of the class we want to create
             clsStockCollection AllStock = new clsStockCollection();
             List<clsStock> TestList = new List<clsStock>();
-
             clsStock TestItem = new clsStock();
-
             //Creating test data for each attribute
             TestItem.Availability = true;
             TestItem.gameID = 3;
@@ -34,11 +32,8 @@ namespace Testing1
             TestItem.Price = 60;
             TestItem.ReleaseDate = new DateTime(06 / 10 / 2020);
             TestItem.AgeRating = 3;
-
             TestList.Add(TestItem);
-
             AllStock.StockList = TestList;
-
             //test to see if it passes
             Assert.AreEqual(AllStock.StockList, TestList);
 

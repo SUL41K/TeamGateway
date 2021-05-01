@@ -84,7 +84,7 @@ public partial class _1_List : System.Web.UI.Page
         else
         {
             //Displays error message
-            lblError.Text = "Please Select a record to delete from the list";
+            lblError.Text = "Please select a record to delete from the list";
         }
     }
 

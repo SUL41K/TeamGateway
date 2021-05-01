@@ -543,7 +543,7 @@ namespace Testing1
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string AgeRating = "2"; //this should be ok
+            string AgeRating = "4"; //this should be ok
             //invoke the method
             Error = AnStock.Valid(gameName, Price, AgeRating, ReleaseDate);
             //test to see that the result is correct
