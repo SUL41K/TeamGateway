@@ -107,7 +107,7 @@ namespace ClassLibrary
             if (Convert.ToDecimal(price) > 100)
                 {
                 //output error message
-                    Error = Error + "The price for this game is too high! : ";
+                    Error = Error + "The price for this game is too high! Price must not exceed 100 : ";
                 }
                 
             }
