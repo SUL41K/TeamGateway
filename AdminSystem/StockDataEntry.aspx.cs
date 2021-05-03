@@ -130,7 +130,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         else if (Found == false)
         {
             //message to convey record not found
-            System.Windows.Forms.MessageBox.Show("This record does not exist");
+            lblError.Text = ("This record does not exist");
         }
 
     }
