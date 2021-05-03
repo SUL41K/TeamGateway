@@ -127,7 +127,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         else if (Found == false)
         {
             //pop up box shows and displays error message
-            System.Windows.Forms.MessageBox.Show("This record does not exist");
+            lblError.Text = "Record not found";
         }
 
         
